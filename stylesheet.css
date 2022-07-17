@@ -1,0 +1,19 @@
+
+div.container {
+    height: 10em;
+    position: relative; 
+}
+div.container p {
+    /*border: 1px solid red;
+    border-radius: 10px;*/
+    position: absolute;
+    top: 3em;
+    padding: 0.5em;
+    margin: auto;
+    max-width: auto;
+    text-align: center;
+    /*left: 50%
+    transform: translate(-50%, -50%); */
+    font-family: Georgia;
+    font-size: 5vw;
+}
