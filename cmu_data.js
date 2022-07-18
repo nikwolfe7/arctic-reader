@@ -1,4 +1,4 @@
-export const data = [
+const array = [
     "Author of the danger trail, Philip Steels, etc.",
     "Not at this particular case, Tom, apologized Whittemore.",
     "For the twentieth time that evening the two men shook hands.",
