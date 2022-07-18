@@ -1174,9 +1174,16 @@ var textbox = document.getElementById('txtbox');
 textbox.innerHTML = array[i];
 //document.body.appendChild(textbox);
 document.onkeydown = function(e) {
-    if (e.keyCode == 32) {
+    if (e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 39) { // forward
         i++;
         if (i == array.length) {
+            i = 0;
+        }
+        textbox.innerHTML = array[i];
+    }
+    else if (e.keyCode == 37 || e.keyCode == 40) { // backward
+        i--;
+        if (i <= 0) {
             i = 0;
         }
         textbox.innerHTML = array[i];
