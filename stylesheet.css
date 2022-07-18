@@ -19,4 +19,5 @@ div.container p {
     transform: translate(-50%, -50%); 
     font-family: Georgia;
     font-size: 5vw;
+    word-wrap: break-word;
 }
