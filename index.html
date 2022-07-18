@@ -17,7 +17,7 @@ document.onkeydown = function(e) {
         if (i == array.length) {
             i = 0;
         }
-        console.log("Displaying element " + i + ": " + array[i]);
+        console.log("Forward Key Event | Displaying element " + i + ": " + array[i]);
         textbox.innerHTML = array[i];
     }
     /* left arrow or down arrow */
@@ -26,10 +26,20 @@ document.onkeydown = function(e) {
         if (i <= 0) {
             i = 0;
         }
-        console.log("Displaying element " + i + ": " + array[i]);
+        console.log("Backward Key Event | Displaying element " + i + ": " + array[i]);
         textbox.innerHTML = array[i];
     }
 }
+
+document.body.addEventListener("touchend", function() {
+	i++;
+    if (i == array.length) {
+        i = 0;
+    }
+    console.log("Touch End Event | Displaying element " + i + ": " + array[i]);
+    textbox.innerHTML = array[i];	
+});
+
 </script>
 </head>
 <body>
