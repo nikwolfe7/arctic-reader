@@ -32,15 +32,20 @@ document.onkeydown = function(e) {
         console.log("Backward Key Event | Displaying element " + i + ": " + array[i]);
         textbox.innerHTML = array[i];
     }
+    /* letter R */
+    else if (e.keyCode == 82) { // random
+    	// Returns a random integer from 0 to 10:
+		i = Math.floor(Math.random() * array.length);
+		console.log("Random Key Event | Displaying element " + i + ": " + array[i]);
+        textbox.innerHTML = array[i];
+    }
 }
 
 document.body.addEventListener("touchend", function() {
-	i++;
-    if (i == array.length) {
-        i = 0;
-    }
-    console.log("Touch End Event | Displaying element " + i + ": " + array[i]);
-    textbox.innerHTML = array[i];	
+	// Returns a random integer from 0 to 10:
+	i = Math.floor(Math.random() * array.length);
+	console.log("Random Touch End Event | Displaying element " + i + ": " + array[i]);
+    textbox.innerHTML = array[i];
 });
 
 </script>
