@@ -67,3 +67,6 @@
      * Count backwards from 10
      * Count to 20 by 2s
      * Count to 30 by 3s 
+     * Word problem:
+       * "If you take $100 to the store and buy a candy bar for $3 and a shirt for $20, how many dollars did you spend?"
+       * Follow up: "How many dollars do you have left?"
