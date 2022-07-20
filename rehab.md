@@ -83,4 +83,6 @@
   * Draw the hour and minute hands as if it were "10 minutes to 11"
   * Ask what time is it?
   * Write your name
+  * General doodling
+    * Both right and left hands
 
