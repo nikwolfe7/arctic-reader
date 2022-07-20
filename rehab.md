@@ -77,6 +77,8 @@
        * Follow up: "How many dollars do you have left?"
   * General Reasoning:
      * "Are grandparents typically younger than their grandchildren?"
+     * "Name as many animals as you can in 1 minute"
+       * Give clues using the first letter or associations
 
 ## 6. Drawing
   * Draw a circle on a page, ask him to write in the numbers as if it were a clock
