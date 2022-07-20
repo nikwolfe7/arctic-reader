@@ -55,6 +55,11 @@
  
  ## 5. Cognitive Therapy
   * Questions to ask:
+     * "What is your name?"
+     * "What are your children's names?"
+     * "What are your children's spouses names?"
+     * "What are you niece and nephew's names?"
+     * "What is your granddaughter's name?"
      * "What day of the week is it?"
      * "What year is it?"
      * "When is your birthday?"
@@ -70,3 +75,12 @@
      * Word problem:
        * "If you take $100 to the store and buy a candy bar for $3 and a shirt for $20, how many dollars did you spend?"
        * Follow up: "How many dollars do you have left?"
+  * General Reasoning:
+     * "Are grandparents typically younger than their grandchildren?"
+
+## 6. Drawing
+  * Draw a circle on a page, ask him to write in the numbers as if it were a clock
+  * Draw the hour and minute hands as if it were "10 minutes to 11"
+  * Ask what time is it?
+  * Write your name
+
