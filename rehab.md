@@ -34,6 +34,8 @@
      * Repeat for left arm (3 reps)
    * Open and close right hand (5x)
    * Squeeze red squishy ball (5x)
+   * Try to give a firm handshake
+     * Squeeze whole hand & just two fingers (requires closing hand more)
    * Hand gestures
       * Dive "OK" sign: 👌
       * Thumbs up sign: 👍
