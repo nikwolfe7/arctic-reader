@@ -74,10 +74,28 @@
      * "What day will it be tomorrow?"
      * "Who is the president of the United States?"
      * "Who is the prime minister of the United Kingdom?"
+  * Language ambiguity:
+     * "I saw the man with the telescope."
+       * Who has the telescope?
+     * "We saw her duck."
+       * What does this mean to you?
+       * Does she have a duck? 
+       * Did she duck to avoid something?
+     * "Sam went for a walk with her friend in the red shirt"
+       * Who has the read shirt?
+     * "The turkey is ready to eat."
+       * Is the turkey going to eat or get eaten? 
   * Numerical reasoning:
      * Count backwards from 10
      * Count to 20 by 2s
      * Count to 30 by 3s 
+     * What's the square root of:
+       * 100, 81, 64, 49, 36, 25, 16, 9, 4, 1
+     * What's the derivative of (try writing):
+       * x^2, x^3, x^4
+     * What's the integral of x from 0 to 1?
+     * What's the integral of 2x from 0 to 1
+     * What's the log of e^x?
      * Word problem:
        * "If you take $100 to the store and buy a candy bar for $3 and a shirt for $20, how many dollars did you spend?"
        * Follow up: "How many dollars do you have left?"
@@ -111,6 +129,7 @@
          * China
          * Japan
          * Brazil
+       * etc. 
           
   * General Reasoning:
      * "Are grandparents typically younger than their grandchildren?"
