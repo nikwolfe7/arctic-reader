@@ -63,6 +63,8 @@
      * "What are you niece and nephew's names?"
      * "What is your granddaughter's name?"
      * "What day of the week is it?"
+     * "What are the names of your cats?"
+     * "What was the name of your first cat?"
      * "What year is it?"
      * "When is your birthday?"
      * "What month is it?"
@@ -77,6 +79,29 @@
      * Word problem:
        * "If you take $100 to the store and buy a candy bar for $3 and a shirt for $20, how many dollars did you spend?"
        * Follow up: "How many dollars do you have left?"
+  * Category Expansions:
+     * Name as many animals as you can in 1 minute
+     * Name as many countries as you can
+       * Break down by continents to help focus
+     * Name as many "things" as you can, e.g.
+       * States & Cities
+       * Senators & Congresspeople
+       * Planets & Moons
+       * Bands & artists
+       * Types of tools
+       * Types of beer
+       * Colors
+       * Geometric shapes
+       * Heads of state, try:
+         * USA
+         * UK
+         * Ghana
+         * France
+         * India
+         * China
+         * Japan
+         * Brazil
+          
   * General Reasoning:
      * "Are grandparents typically younger than their grandchildren?"
      * "Name as many animals as you can in 1 minute"
