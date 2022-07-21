@@ -58,6 +58,7 @@
  ## 5. Cognitive Therapy
   * Questions to ask:
      * "What is your name?"
+     * "What is your wife's name?"
      * "What are your children's names?"
      * "What are your children's spouses names?"
      * "What are you niece and nephew's names?"
@@ -65,6 +66,7 @@
      * "What day of the week is it?"
      * "What are the names of your cats?"
      * "What was the name of your first cat?"
+     * "What are the names of all the cats you've ever had?"
      * "What year is it?"
      * "When is your birthday?"
      * "What month is it?"
@@ -92,6 +94,14 @@
        * Types of beer
        * Colors
        * Geometric shapes
+       * Oceans & Rivers
+       * Fruits & vegetables
+       * Kitchen appliances
+       * Household appliances
+       * Diving equipment
+       * Cuts of beef
+       * Types of seafood
+       * Types of wine
        * Heads of state, try:
          * USA
          * UK
