@@ -7,21 +7,21 @@
 <link rel="stylesheet" href="stylesheet.css">
 <script type="text/javascript" src="cmu_data.js"></script>
 <script type="module">
-console.log("Loaded CMU array with: " + array.length + " elements.");	
+console.log("Loaded CMU Arctic dataset array with: " + arctic_dataset.length + " elements.");  
 
 var i = 0;
 var textbox = document.getElementById('txtbox');
-textbox.innerHTML = array[i];
+textbox.innerHTML = arctic_dataset[i];
 
 document.onkeydown = function(e) {
-	/* Space bar, right arrow, or up arrow */
+    /* Space bar, right arrow, or up arrow */
     if (e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 39) { // forward
         i++;
-        if (i == array.length) {
+        if (i == arctic_dataset.length) {
             i = 0;
         }
-        console.log("Forward Key Event | Displaying element " + i + ": " + array[i]);
-        textbox.innerHTML = array[i];
+        console.log("Forward Key Event | Displaying element " + i + ": " + arctic_dataset[i]);
+        textbox.innerHTML = arctic_dataset[i];
     }
     /* left arrow or down arrow */
     else if (e.keyCode == 37 || e.keyCode == 40) { // backward
@@ -29,30 +29,30 @@ document.onkeydown = function(e) {
         if (i <= 0) {
             i = 0;
         }
-        console.log("Backward Key Event | Displaying element " + i + ": " + array[i]);
-        textbox.innerHTML = array[i];
+        console.log("Backward Key Event | Displaying element " + i + ": " + arctic_dataset[i]);
+        textbox.innerHTML = arctic_dataset[i];
     }
     /* letter R */
     else if (e.keyCode == 82) { // random
-    	// Returns a random integer from 0 to 10:
-		i = Math.floor(Math.random() * array.length);
-		console.log("Random Key Event | Displaying element " + i + ": " + array[i]);
-        textbox.innerHTML = array[i];
+        // Returns a random integer from 0 to 10:
+        i = Math.floor(Math.random() * arctic_dataset.length);
+        console.log("Random Key Event | Displaying element " + i + ": " + arctic_dataset[i]);
+        textbox.innerHTML = arctic_dataset[i];
     }
 }
 
 document.body.addEventListener("touchend", function() {
-	// Returns a random integer from 0 to 10:
-	i = Math.floor(Math.random() * array.length);
-	console.log("Random Touch End Event | Displaying element " + i + ": " + array[i]);
-    textbox.innerHTML = array[i];
+    // Returns a random integer from 0 to 10:
+    i = Math.floor(Math.random() * arctic_dataset.length);
+    console.log("Random Touch End Event | Displaying element " + i + ": " + arctic_dataset[i]);
+    textbox.innerHTML = arctic_dataset[i];
 });
 
 </script>
 </head>
 <body>
 <div class="container">
-<p id="txtbox"></p>
+<span id="txtbox" class="text_display"></span>
 </div>
 </body>
 </html>

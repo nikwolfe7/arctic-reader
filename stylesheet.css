@@ -1,23 +1,28 @@
 html, body {
-    margin: 0;
     height: 100%;
 }
 div.container {
-    height: 10em;
-    position: relative; 
-}
-div.container p {
-    /*border: 1px solid red;
-    border-radius: 10px;*/
-    position: absolute;
-    top: 2em;
-    padding: 0.5em;
+    /*height: 10em;*/
+    /*position: relative;*/
+    /*position: absolute;
     margin: auto;
-    max-width: auto;
+    width: 75%;*/
+}
+.text_display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 6em;
+    /*border: 3px solid green;*/
+    /*border-radius: 10px;*/
+    /*top: 2em;*/
+    padding: 0.5em;
+    /*margin: auto;
+    max-width: auto;*/
     text-align: center;
-    left: 50%
-    transform: translate(-50%, -50%); 
+    /*left: 50%*/
+    /*transform: translate(-50%, -50%); */
     font-family: Georgia;
     font-size: 5vw;
-    word-wrap: break-word;
+    /*word-wrap: break-word;*/
 }
