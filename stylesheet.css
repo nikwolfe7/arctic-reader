@@ -13,6 +13,8 @@ div.container {
     justify-content: center;
     align-items: center;
     height: 6em;
+    border: 3px solid green;
+    border-radius: 10px;
     /*border: 3px solid green;*/
     /*border-radius: 10px;*/
     /*top: 2em;*/
@@ -24,5 +26,24 @@ div.container {
     /*transform: translate(-50%, -50%); */
     font-family: Georgia;
     font-size: 5vw;
+    /*word-wrap: break-word;*/
+}
+.title_display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1em;
+    border: 3px solid green;
+    border-radius: 10px;
+    text-transform: uppercase;
+    /*top: 2em;*/
+    padding: 0.5em;
+    /*margin: auto;
+    max-width: auto;*/
+    text-align: center;
+    /*left: 50%*/
+    /*transform: translate(-50%, -50%); */
+    font-family: Georgia;
+    font-size: 3vw;
     /*word-wrap: break-word;*/
 }

@@ -4,14 +4,19 @@
 <title>Arctic Reader</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="icon" href="https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f976.svg">
-<link rel="stylesheet" href="stylesheet.css">
+<link rel="stylesheet" href="../stylesheet.css">
 <script type="text/javascript" src="questions_data.js"></script>
 <script type="module">
 console.log("Loaded Questions array with: " + questions.length + " elements.");	
 
 var i = 0;
+var j = 0; 
 var textbox = document.getElementById('txtbox');
-textbox.innerHTML = questions[i];
+var titlebox = document.getElementById('titlebox');
+
+titlebox.innerHTML = questions[i].title;
+textbox.innerHTML = questions[i].data[j];
+
 
 document.onkeydown = function(e) {
 	/* Space bar, right arrow, or up arrow */
@@ -52,7 +57,8 @@ document.body.addEventListener("touchend", function() {
 </head>
 <body>
 <div class="container">
-<span id="txtbox" class="text_display"></span>
+    <span id="titlebox" class="title_display"></span>
+    <span id="txtbox" class="text_display"></span>
 </div>
 </body>
 </html>
