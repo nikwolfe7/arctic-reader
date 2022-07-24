@@ -8,7 +8,16 @@ html, body {
     color: pink;
 }
 .cL {
-    color: or;
+    color: orange;
+}
+.cI {
+    color: red;
+}
+.cI2 {
+    color: yellow;
+}
+.cV {
+    color: blue;
 }
 div.container {
     /*height: 10em;*/
@@ -22,7 +31,7 @@ div.container {
     justify-content: center;
     align-items: center;
     height: 6em;
-    /*text-shadow: 2px 2px 2px black;
+    text-shadow: 2px 2px 2px black;
     /*border: 3px solid green;
     border-radius: 10px;*/
     /*border: 3px solid green;*/
@@ -35,7 +44,7 @@ div.container {
     /*left: 50%*/
     /*transform: translate(-50%, -50%); */
     font-family: Georgia;
-    font-size: 5vw;
+    font-size: 8vw;
     /*word-wrap: break-word;*/
 }
 .title_display {
