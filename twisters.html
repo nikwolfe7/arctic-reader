@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arctic Reader</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link rel="icon" href="https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f976.svg">
+<link rel="stylesheet" href="stylesheet.css">
+<script type="text/javascript" src="twisters.js"></script>
+<script type="module">
+console.log("Loaded CMU Arctic dataset array with: " + tongue_twisters.length + " elements.");  
+
+var i = 0;
+var textbox = document.getElementById('txtbox');
+textbox.innerHTML = tongue_twisters[i];
+
+document.onkeydown = function(e) {
+    /* Space bar, right arrow, or up arrow */
+    if (e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 39) { // forward
+        i++;
+        if (i == tongue_twisters.length) {
+            i = 0;
+        }
+        console.log("Forward Key Event | Displaying element " + i + ": " + tongue_twisters[i]);
+        textbox.innerHTML = tongue_twisters[i];
+    }
+    /* left arrow or down arrow */
+    else if (e.keyCode == 37 || e.keyCode == 40) { // backward
+        i--;
+        if (i <= 0) {
+            i = 0;
+        }
+        console.log("Backward Key Event | Displaying element " + i + ": " + tongue_twisters[i]);
+        textbox.innerHTML = tongue_twisters[i];
+    }
+    /* letter R */
+    else if (e.keyCode == 82) { // random
+        // Returns a random integer from 0 to 10:
+        i = Math.floor(Math.random() * tongue_twisters.length);
+        console.log("Random Key Event | Displaying element " + i + ": " + tongue_twisters[i]);
+        textbox.innerHTML = tongue_twisters[i];
+    }
+}
+
+document.body.addEventListener("touchend", function() {
+    // Returns a random integer from 0 to 10:
+    i = Math.floor(Math.random() * tongue_twisters.length);
+    console.log("Random Touch End Event | Displaying element " + i + ": " + tongue_twisters[i]);
+    textbox.innerHTML = tongue_twisters[i];
+});
+
+</script>
+</head>
+<body>
+<div class="container">
+    <span id="titlebox" class="title_display">Slow · Loud · Articulate · Pause</span>
+    <span id="txtbox" class="text_display"></span>
+</div>
+</body>
+</html>

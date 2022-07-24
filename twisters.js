@@ -1,0 +1,20 @@
+const tongue_twisters = [
+    "She dreamed • of cheap ship trips • on a chartered ship • on the seven seas.",
+    "A gnawing noise • annoyed • the nervous oyster.",
+    "Lloyd spilled • lemon liniment • on the yellow linoleum.",
+    "A skunk sat • on a sycamore stump • and stunk up • the stump.",
+    "Blake bought • a black-backed bath brush • in Blair's Bath Boutique.",
+    "Daniel • will hand you • an annual • cocker spaniel manual.",
+    "The Swiss wristwatch shop • shut soon • after seven.",
+    "Shirly sells • preshrunk shirts • at the sweatshirt shop.",
+    "Neither • of Ned's nieces' knees • was knobby • but Nellie's nephew's • were.",
+    "The minister's • sinister • moustache • frustrated most sincere parishioners.",
+    "The short-sleeved shirt • should wash • with the shorts • and sheets • in the wash.",
+    "Phone friendly Fred • at his toll-free number • for fresh fried fish • for Friday",
+    "Sheep shouldn't sleep • in chick shacks • they should sleep • in the sheep shacks.",
+    "There's no biz • like show biz • on a no-show • slow • biz quiz show.",
+    "Cheryl • should choose • new shoes • her dog shouldn't choose • to chew.",
+    "The burger bun • is buttered better • because Betty bought • better butter.",
+    "The flea and the fly • who flew in the flue • got stuck • in some super glue goo.",
+    "Linda looked • for lots of literary literature • at the local library."
+];
