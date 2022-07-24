@@ -1,6 +1,15 @@
 html, body {
     height: 100%;
 }
+.cO {
+    color: green;
+}
+.cA {
+    color: pink;
+}
+.cL {
+    color: or;
+}
 div.container {
     /*height: 10em;*/
     /*position: relative;*/
