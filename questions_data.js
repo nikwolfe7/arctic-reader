@@ -250,6 +250,22 @@ const questions = [
     ]
   },
   {
+    "title": "Situational Sentences",
+    "question_type": "simple",
+    "data": [
+      "You're at a restaurant and your bowl of soup arrives. However, you don't have any utensils. You turn to your waiter and say...",
+      "You're at a friend's house watching TV. The voices coming from the TV are so quiet that you can't understand the story. You turn to your friend and say...",
+      "You go to a restaurant and order a chicken breast. When you cut into the chicken, it is bright pink and bloody. You speak with the waiter and say...",
+      "Your clothes are done washing in the washer but you're not able to get to the machine to move them. You call up your daughter and say...",
+      "Your headache is getting worse and worse and you can no longer concentrate. You turn to your spouse and say...",
+      "It's your turn to order at McDonald's. You walk up to the cashier and say...",
+      "You find a credit card on the ground. A few minutes later you see someone frantically searching his pockets. You walk up to him and say...",
+      "You decide to go watch a movie but the people sitting in front of you are talking and you can't hear the movie. You tap them on the shoulders and say...",
+      "You go to the bank with $200 cash in your pocket. You hand the cash to the teller and say...",
+      "You have an important appointment Monday morning. Your friend calls and asks if it's okay to visit on Monday around breakfast. You say..."
+    ]
+  },
+  {
     "title": "Speech therapy: say out loud",
     "question_type": "simple",
     "data": [
