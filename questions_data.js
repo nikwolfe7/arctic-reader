@@ -37,6 +37,32 @@ const questions = [
     ]
   },
   {
+    "title": "Naming to Description: What am I?",
+    "question_type": "simple",
+    "data": [
+      "This animal is black and white, is from China, and eats bamboo.",
+      "Panda",
+      "This person was a president who wore a big hat and was alive during the Civil War.",
+      "Abraham Lincoln",
+      "This place is an island in the Pacific Ocean known for sushi and is called the land of the rising sun.",
+      "Japan",
+      "This instrument is silver, plays high pitched notes, and is similar to the piccolo",
+      "Flute",
+      "This article of clothing is worn over your shirt on cold days and is often filled with down.",
+      "A coat or jacket",
+      "This food is typically eaten for breakfast, comes from a pig, and is usually fried until crispy.",
+      "Bacon",
+      "This drink is usually hot and is very popular in England, you can add cream and honey to it.",
+      "Tea",
+      "This job involves going house to house and delivering letters, these people are employed by USPS.",
+      "Mailman",
+      "This object rings at a certain time in order to wake you up in the morning.",
+      "Alarm clock",
+      "This vehicle has a sail, steering wheel, and anchor.",
+      "Boat, ship"
+    ]
+  },
+  {
     "title": "Breathing Exercises",
     "question_type": "simple",
     "data": [
@@ -195,7 +221,7 @@ const questions = [
     "question_type": "completion",
     "data": [
       "The room is either too hot or too ____",
-      "My plants are either too short or too ____"
+      "My plants are either too short or too ____",
     ]
   },
   {
