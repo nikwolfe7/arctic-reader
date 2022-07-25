@@ -1,5 +1,42 @@
 const questions = [
   {
+    "title": "Category Expansions",
+    "question_type": "simple",
+    "data": [
+      "In 1 minute:<br>Name as many animals as you can.",
+      "In 1 minute:<br>Name as many countries as you can.",
+      "In 1 minute:<br>Name as many U.S. states as you can.",
+      "In 1 minute:<br>Name as many countries in Europe as you can.",
+      "In 1 minute:<br>Name as many countries in Africa as you can.",
+      "In 1 minute:<br>Name as many countries in North America as you can.",
+      "In 1 minute:<br>Name as many countries in South America as you can.",
+      "In 1 minute:<br>Name as many countries in Asia as you can.",
+      "In 1 minute:<br>Name as many countries in Antarctica as you can.",
+      "LOL! 😂",
+      "In 1 minute:<br>Name as many countries in Australia as you can.",
+      "Gotcha again! 😂",
+      "In 1 minute, name as many as you can:<br>Cities",
+      "In 1 minute, name as many as you can:<br>Senators & Congresspeople",
+      "In 1 minute, name as many as you can:<br>Supreme Court Justices",
+      "In 1 minute, name as many as you can:<br>Planets & Moons",
+      "In 1 minute, name as many as you can:<br>Rock bands",
+      "In 1 minute, name as many as you can:<br>Colors",
+      "In 1 minute, name as many as you can:<br>Tools",
+      "In 1 minute, name as many as you can:<br>Beers",
+      "In 1 minute, name as many as you can:<br>Geometric shapes",
+      "In 1 minute, name as many as you can:<br>Oceans & Rivers",
+      "In 1 minute, name as many as you can:<br>Fruits & Vegetables",
+      "In 1 minute, name as many as you can:<br>Kitchen appliances",
+      "In 1 minute, name as many as you can:<br>Household appliances",
+      "In 1 minute, name as many as you can:<br>Diving gear",
+      "In 1 minute, name as many as you can:<br>Cuts of beef",
+      "In 1 minute, name as many as you can:<br>Types of seafood",
+      "In 1 minute, name as many as you can:<br>Types of wine",
+      "In 1 minute, name as many as you can:<br>Heads of state",
+      "Good job!"
+    ]
+  },
+  {
     "title": "Breathing Exercises",
     "question_type": "simple",
     "data": [
