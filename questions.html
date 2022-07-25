@@ -9,82 +9,87 @@
 <script type="module">
 console.log("Loaded Questions array with: " + questions.length + " elements.");	
 
+var i = 0;
+var j = 0; 
 
-function boundsCheck(i, j) {
-    let ix = Math.min(Math.max(i, 0), questions.length-1),
-        jx = Math.min(Math.max(j, 0), questions[ix].data.length-1);
-    return { ix, jx };
+function boundsCheck() {
+    i = Math.min(Math.max(i, 0), questions.length - 1);
+    j = Math.min(Math.max(j, 0), questions[i].data.length - 1);
 }
 
-function setTextFields(i, j) {
-    ind = boundsCheck(i, j);
-    let qIndex = ind.ix, dIndex = ind.jx;
-        
-    let title = questions[qIndex].title,
-        text = questions[qIndex].data[dIndex];
+function setTextFields() {
+    boundsCheck();        
+    let title = questions[i].title,
+        text = questions[i].data[j];
     
-    console.log("Displaying element title " + qIndex + ": " + title);
-    console.log("Displaying element text " + dIndex + ": " + text);
+    console.log("Displaying element title " + i + ": " + title);
+    console.log("Displaying element text " + j + ": " + text);
     
     document.getElementById('titlebox').innerHTML = title;
     document.getElementById('txtbox').innerHTML = text;
 }
 
-function nextQuestion(i, j) {
-    ind = boundsCheck(i, j);
-    let i = ind.ix, j = ind.jx;
-    let iNext = ++i >= questions.length ? 0 : i;
-    let jNext = 0;
-    return { iNext, jNext };
+function nextQuestion() {
+    boundsCheck();
+    i = ++i >= questions.length ? 0 : i;
+    j = 0;
 }
 
-function nextItem(i, j) {
-    ind = boundsCheck(i, j);
-    let i = ind.ix, j = ind.jx;
-    let jNext = ++j >= questions[i].data.length;
+function prevQuestion() {
+    boundsCheck();
+    i = --i < 0 ? questions.length - 1 : i;
+    j = 0;
 }
 
-var i = 0;
-var j = 0; 
-setTextFields(i,j);
+function randQuestion() {
+    i = Math.floor(Math.random() * questions.length);
+    j = 0;
+}
 
-document.onkeydown = function(e) {
-    /* Space bar */
-    if (e.keyCode == 32) {
-
+function nextItem() {
+    boundsCheck();
+    /* data items exceeded, proceed to next question */ 
+    if (++j >= questions[i].data.length) {
+        nextQuestion();
     }
-	/* Space bar, right arrow, or up arrow */
-    else if (e.keyCode == 32 || e.keyCode == 38 || e.keyCode == 39) { // forward
-        i++;
-        if (i == questions.length) {
-            i = 0;
-        }
+}
+
+// initialize
+setTextFields();
+
+/* Keyboard + laptop */
+document.onkeydown = function(e) {
+    /* space bar */
+    if (e.keyCode == 32) {
+        console.log("Space Bar Key Event");
+        nextItem();
+        setTextFields();
+    }
+	/* right arrow, or up arrow */
+    else if (e.keyCode == 38 || e.keyCode == 39) {
         console.log("Forward Key Event");
-        setTextFields(i,j);
+        nextQuestion();
+        setTextFields();
     }
     /* left arrow or down arrow */
     else if (e.keyCode == 37 || e.keyCode == 40) { // backward
-        i--;
-        if (i <= 0) {
-            i = 0;
-        }
-        console.log("Backward Key Event | Displaying element " + i + ": " + questions[i]);
-        textbox.innerHTML = questions[i].title;
+        console.log("Backward Key Event");
+        prevQuestion();
+        setTextFields();
     }
     /* letter R */
     else if (e.keyCode == 82) { // random
-    	// Returns a random integer from 0 to 10:
-		i = Math.floor(Math.random() * questions.length);
-		console.log("Random Key Event | Displaying element " + i + ": " + questions[i]);
-        textbox.innerHTML = questions[i].title;
+		console.log("Random Key Event");
+        randQuestion();
+        setTextFields();
     }
 }
 
+/* Mobile touch screen */
 document.body.addEventListener("touchend", function() {
-	// Returns a random integer from 0 to 10:
-	i = Math.floor(Math.random() * questions.length);
-	console.log("Random Touch End Event | Displaying element " + i + ": " + questions[i]);
-    textbox.innerHTML = questions[i];
+	console.log("Touch End Event");
+	nextItem();
+	setTextFields();
 });
 
 </script>
