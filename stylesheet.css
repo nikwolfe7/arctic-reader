@@ -30,7 +30,7 @@ div.container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 6em;
+    height: 3em;
     text-shadow: 2px 2px 2px black;
     /*border: 3px solid green;
     border-radius: 10px;*/
