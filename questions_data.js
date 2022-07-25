@@ -220,8 +220,33 @@ const questions = [
     "title": "Sentence Completion",
     "question_type": "completion",
     "data": [
-      "The room is either too hot or too ____",
-      "My plants are either too short or too ____",
+      "The room is either too hot or too ____.",
+      "My plants are either too short or too ____.",
+      "I am either right or _____.",
+      "She is either sad or _____.",
+      "The answer can be true or _____.",
+      "You can go either up or _____.",
+      "You can find it on either the top or the _____.",
+      "Not evertyhing is either black or _____.",
+      "I can't tell if it's night or _____.",
+      "The towel is wet or _____.",
+      "I am tired, so I am going to take a _____.",
+      "It is so cold, please turn on the _____.",
+      "It is dark in here, turn on the _____.",
+      "I grabbed the comb and combed my _____.",
+      "I wash my hands with soap and _____.",
+      "Take out the pot and boil some _____.",
+      "I haven't seen you in a long _____.",
+      "When I feel sick, I go visit the _____.",
+      "My neighbor fell and broke his _____.",
+      "I could not sleep las night, I feel so _____."
+    ]
+  },
+  {
+    "title": "Object Naming",
+    "question_type": "simple",
+    "data": [
+      "Name the objects you see in the room."
     ]
   },
   {
