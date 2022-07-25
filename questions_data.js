@@ -168,7 +168,18 @@ const questions = [
       "Puh-tuh-kuh<br>Puh-tuh-kuh<br>Puh-tuh-kuh",
       "Puh puh puh",
       "Tuh tuh tuh",
-      "Kuh kuh kuh"
+      "Kuh kuh kuh",
+      "Red linoleum, yellow linoleum"
+    ]
+  },
+  {
+    "title": "Speech therapy: Reading aloud",
+    "question_type": "simple",
+    "data": [
+      "As LOUD as you can:<br>&ldquo;Aaaaahhhh&rdquo;",
+      "Practice clearing your throat.",
+      "With computer:&nbsp;&#10;&#13;<a target='_blank' href='https://arctic-reader.com'>Weird Sentences!</a>",
+      "With computer:&nbsp;<a target='_blank' href='https://arctic-reader.com/twisters'>Tongue Twisters!</a>"
     ]
   }
 ];
