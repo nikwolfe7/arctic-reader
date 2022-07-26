@@ -250,6 +250,22 @@ const questions = [
     ]
   },
   {
+    "title": "Conversation",
+    "question_type": "simple",
+    "data": [
+      "What would you do if...<br><br>You inherited a million dollars?",
+      "What would you do if...<br><br>You could go to university for free?",
+      "What would you do if...<br><br>You had a superpower? What superpower would you have?",
+      "What would you do if...<br><br>You were a famous celebrity?",
+      "What would you do if...<br><br>You were the President of the U.S.?",
+      "What would you do if...<br><br>You never had to sleep again?",
+      "What would you do if...<br><br>You knew the world was going to end in 3 days?",
+      "What would you do if...<br><br>You were 25 again?",
+      "What would you do if...<br><br>You were invisible?",
+      "What would you do if...<br><br>You could travel anywhere in the world?",
+    ]
+  },
+  {
     "title": "Situational Sentences",
     "question_type": "simple",
     "data": [
