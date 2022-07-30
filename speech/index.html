@@ -27,11 +27,37 @@ var arctic = {
 
 questions.push(arctic);
 
+// shuffle our sesh
+shuffle(questions);
+
+// initialize
+setTextFields();
+
 
 function boundsCheck() {
     i = Math.min(Math.max(i, 0), questions.length - 1);
     j = Math.min(Math.max(j, 0), questions[i].data.length - 1);
 }
+
+
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
 
 function getRandom(arr, n) {
     let result = new Array(n),
@@ -47,6 +73,7 @@ function getRandom(arr, n) {
     return result;
 }
 
+
 function setTextFields() {
     boundsCheck();        
     let title = questions[i].title,
@@ -59,11 +86,13 @@ function setTextFields() {
     document.getElementById('txtbox').innerHTML = text;
 }
 
+
 function nextQuestion() {
     boundsCheck();
     i = ++i >= questions.length ? 0 : i;
     j = 0;
 }
+
 
 function prevQuestion() {
     boundsCheck();
@@ -71,10 +100,12 @@ function prevQuestion() {
     j = 0;
 }
 
+
 function randQuestion() {
     i = Math.floor(Math.random() * questions.length);
     j = 0;
 }
+
 
 function nextItem() {
     boundsCheck();
@@ -83,9 +114,6 @@ function nextItem() {
         nextQuestion();
     }
 }
-
-// initialize
-setTextFields();
 
 /* Keyboard + laptop */
 document.onkeydown = function(e) {

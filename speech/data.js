@@ -38,6 +38,22 @@ const questions = [
     ]
 },
 {
+    "title": "Danish Speech: Slow &#9679; Loud &#9679; Articulate &#9679; Pause",
+    "question_type": "simple",
+    "data": [
+        "Fem flade flødeboller på et fladt flødebollefad.",
+        "Rødgrød med fløde.",
+        "Kæmpe kæppe knækker næppe.",
+        "Bløde, blege bøgeblade.",
+        "Bløde, Glatte blå gadeplakater.",
+        "Stativ, stakit, kasket.",
+        "Ringeren i Ringe ringer ringere end ringeren ringer i Ringsted.",
+        "Du kan ikke altid plukke frisk frugt med en brugt frugtplukker.",
+        "Fisker Frits fisker friske fisk.",
+        "Døde røde rødøjede rådne røgede ørreder med fløde."
+    ]
+},
+{
     "title": "Cognitive: Category Expansions",
     "question_type": "simple",
     "data": [
@@ -152,7 +168,7 @@ const questions = [
         "I haven't seen you in a long _____.",
         "When I feel sick, I go visit the _____.",
         "My neighbor fell and broke his _____.",
-        "I could not sleep las night, I feel so _____."
+        "I could not sleep last night, I feel so _____."
     ]
 },
 {
