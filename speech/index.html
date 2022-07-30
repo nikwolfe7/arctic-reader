@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arctic Reader</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<link rel="icon" href="https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f976.svg">
+<link rel="stylesheet" href="../stylesheet.css">
+<script type="text/javascript" src="data.js"></script>
+<script type="module">
+
+console.log("Loaded Questions array with: " + questions.length + " elements.");	
+
+var i = 0;
+var j = 0; 
+
+function boundsCheck() {
+    i = Math.min(Math.max(i, 0), questions.length - 1);
+    j = Math.min(Math.max(j, 0), questions[i].data.length - 1);
+}
+
+function setTextFields() {
+    boundsCheck();        
+    let title = questions[i].title,
+        text = questions[i].data[j];
+    
+    console.log("Displaying element title " + i + ": " + title);
+    console.log("Displaying element text " + j + ": " + text);
+    
+    document.getElementById('titlebox').innerHTML = title;
+    document.getElementById('txtbox').innerHTML = text;
+}
+
+function nextQuestion() {
+    boundsCheck();
+    i = ++i >= questions.length ? 0 : i;
+    j = 0;
+}
+
+function prevQuestion() {
+    boundsCheck();
+    i = --i < 0 ? questions.length - 1 : i;
+    j = 0;
+}
+
+function randQuestion() {
+    i = Math.floor(Math.random() * questions.length);
+    j = 0;
+}
+
+function nextItem() {
+    boundsCheck();
+    /* data items exceeded, proceed to next question */ 
+    if (++j >= questions[i].data.length) {
+        nextQuestion();
+    }
+}
+
+// initialize
+setTextFields();
+
+/* Keyboard + laptop */
+document.onkeydown = function(e) {
+    /* space bar */
+    if (e.keyCode == 32) {
+        console.log("Space Bar Key Event");
+        nextItem();
+        setTextFields();
+    }
+	/* right arrow, or up arrow */
+    else if (e.keyCode == 38 || e.keyCode == 39) {
+        console.log("Forward Key Event");
+        nextQuestion();
+        setTextFields();
+    }
+    /* left arrow or down arrow */
+    else if (e.keyCode == 37 || e.keyCode == 40) { // backward
+        console.log("Backward Key Event");
+        prevQuestion();
+        setTextFields();
+    }
+    /* letter R */
+    else if (e.keyCode == 82) { // random
+		console.log("Random Key Event");
+        randQuestion();
+        setTextFields();
+    }
+}
+
+/* Mobile touch screen */
+document.body.addEventListener("touchend", function() {
+	console.log("Touch End Event");
+	nextItem();
+	setTextFields();
+});
+
+</script>
+</head>
+<body>
+<div class="container">
+    <span id="titlebox" class="title_display"></span>
+    <span id="txtbox" class="text_display"></span>
+</div>
+</body>
+</html>
