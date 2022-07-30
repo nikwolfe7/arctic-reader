@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="icon" href="https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f976.svg">
 <link rel="stylesheet" href="../stylesheet.css">
+<script type="text/javascript" src="../cmu_data.js"></script>
 <script type="text/javascript" src="data.js"></script>
 <script type="module">
 
@@ -14,9 +15,36 @@ console.log("Loaded Questions array with: " + questions.length + " elements.");
 var i = 0;
 var j = 0; 
 
+/* Add some artic sentence*/
+var num_arctic_sentences = 20;
+console.log("Sampling " + num_arctic_sentences + " from arctic dataset and appended to questions.");
+
+var arctic = {
+    "title": "Speech: Read Out Loud",
+    "question_type": "simple",
+    "data": getRandom(arctic_dataset, num_arctic_sentences)
+};
+
+questions.push(arctic);
+
+
 function boundsCheck() {
     i = Math.min(Math.max(i, 0), questions.length - 1);
     j = Math.min(Math.max(j, 0), questions[i].data.length - 1);
+}
+
+function getRandom(arr, n) {
+    let result = new Array(n),
+        len = arr.length,
+        taken = new Array(len);
+    /* bound check */    
+    n = n > len ? len : n;
+    while (n--) {
+        var x = Math.floor(Math.random() * len);
+        result[n] = arr[x in taken ? taken[x] : x];
+        taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
 }
 
 function setTextFields() {
