@@ -1,6 +1,19 @@
 /* Speech & Cognitive Therapy */
 const questions = [
 {
+    "title": "Speech: Get Loud",
+    "question_type": "simple",
+    "data": [
+    "As LOUD as you can:<br>&ldquo;Aaaaahhhh&rdquo;",
+        "Practice clearing your throat.",
+        "Puh-tuh-kuh<br>Puh-tuh-kuh<br>Puh-tuh-kuh",
+        "Puh puh puh",
+        "Tuh tuh tuh",
+        "Kuh kuh kuh",
+        "Red linoleum, yellow linoleum"
+    ]
+},
+{
     "title": "Speech: Slow &#9679; Loud &#9679; Articulate &#9679; Pause",
     "question_type": "simple",
     "data": [
@@ -181,27 +194,6 @@ const questions = [
         "You decide to go watch a movie but the people sitting in front of you are talking and you can't hear the movie. You tap them on the shoulders and say...",
         "You go to the bank with $200 cash in your pocket. You hand the cash to the teller and say...",
         "You have an important appointment Monday morning. Your friend calls and asks if it's okay to visit on Monday around breakfast. You say..."
-    ]
-},
-{
-    "title": "Speech: say out loud",
-    "question_type": "simple",
-    "data": [
-        "Puh-tuh-kuh<br>Puh-tuh-kuh<br>Puh-tuh-kuh",
-        "Puh puh puh",
-        "Tuh tuh tuh",
-        "Kuh kuh kuh",
-        "Red linoleum, yellow linoleum"
-    ]
-},
-{
-    "title": "Speech: Reading aloud",
-    "question_type": "simple",
-    "data": [
-        "As LOUD as you can:<br>&ldquo;Aaaaahhhh&rdquo;",
-        "Practice clearing your throat.",
-        "With computer:&nbsp;&#10;&#13;<a target='_blank' href='https://arctic-reader.com'>Weird Sentences!</a>",
-        "With computer:&nbsp;<a target='_blank' href='https://arctic-reader.com/twisters'>Tongue Twisters!</a>"
     ]
 }
 ];
