@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Arctic Reader</title>
+<title>Physical Therapy</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <link rel="icon" href="https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f976.svg">
@@ -14,9 +14,33 @@ console.log("Loaded Questions array with: " + questions.length + " elements.");
 var i = 0;
 var j = 0; 
 
+// shuffle our sesh
+shuffle(questions);
+
+// initialize
+setTextFields();
+
 function boundsCheck() {
     i = Math.min(Math.max(i, 0), questions.length - 1);
     j = Math.min(Math.max(j, 0), questions[i].data.length - 1);
+}
+
+function shuffle(array) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
 }
 
 function setTextFields() {
@@ -55,9 +79,6 @@ function nextItem() {
         nextQuestion();
     }
 }
-
-// initialize
-setTextFields();
 
 /* Keyboard + laptop */
 document.onkeydown = function(e) {
