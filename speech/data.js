@@ -33,6 +33,7 @@ const questions = [
     "title": "Speech: Slow &#9679; Loud &#9679; Articulate &#9679; Pause",
     "question_type": "simple",
     "data": [
+        "The sixth &bull; sick sheik’s &bull; sixth sheep’s sick",
         "She dreamed &bull; of cheap ship trips &bull; on a chartered ship &bull; on the seven seas.",
         "A gnawing noise &bull; annoyed &bull; the nervous oyster.",
         "Lloyd spilled &bull; lemon liniment &bull; on the yellow linoleum.",
