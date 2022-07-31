@@ -1,6 +1,22 @@
 /* Speech & Cognitive Therapy */
 const questions = [
 {
+    "title": "Cognitive: What Is This?",
+    "question_type": "simple",
+    "data": [
+        "<img src='https://www.webbcompare.com/img/webb/southern_nebula_2800.jpg'/>",
+        "The Southern Ring Nebula",
+        "<img src='https://www.webbcompare.com/img/webb/carina_2800.jpg'/>",
+        "The Carina Nebula",
+        "<img src='https://www.webbcompare.com/img/webb/deep_field_2800.jpg'/>",
+        "The JWST Deep Field Image",
+        "<img src='https://www.webbcompare.com/img/webb/stephans_quintet_2800.jpg'/>",
+        "Stephan's Quintet",
+        "<img src='../img/vegetables.jpeg'>",
+        "Vegetables: Cucumbers, Green Peppers, Okra, Squash, Green Beans, Cherry Tomatoes, Hierlom Tomatoes",
+    ]
+},
+{
     "title": "Speech: Get Loud",
     "question_type": "simple",
     "data": [

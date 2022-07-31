@@ -11,6 +11,13 @@ const questions = [
     ]
   },
   {
+    "title": "Occupational Therapy: Typing",
+    "question_type": "simple",
+    "data": [
+      "With computer:&nbsp;<a target='_blank' href='https://www.keybr.com'>Keyboard Practice</a>",
+    ]
+  },
+  {
     "title": "Occupational Therapy: Hand gestures",
     "question_type": "simple",
     "data": [
@@ -19,9 +26,28 @@ const questions = [
       "Touch each finger to thumb in order",
       "🖖<br>&ldquo;Live long and prosper&rdquo; sign",
       "🤘<br>Heavy metal sign",
-      "With computer:&nbsp;<a target='_blank' href='https://www.youtube.com/watch?v=cGavOVNDj1s'>ASL Alphabet</a>",
-      "With computer:&nbsp;<a target='_blank' href='https://www.youtube.com/watch?v=cJ6UFIP-Vt0'>ASL Numbers</a>",
+      '<iframe src="https://www.youtube.com/embed/cGavOVNDj1s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
+      '<iframe src="https://www.youtube.com/embed/cJ6UFIP-Vt0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
       "🙌<br>Woo-hoo! Done!"
     ]
-  }
+  },
+  {
+    "title": "Occupational Therapy: Drawing a clock",
+    "question_type": "simple",
+    "data": [
+      "First, draw a circle on a page.",
+      "Next, write the numbers as if the circle were a clock.",
+      "Draw the hour and minute hands as if it were &ldquo;10 minutes to 11.&rdquo;"
+    ]
+  },
+  {
+    "title": "Occupational Therapy: Writing",
+    "question_type": "simple",
+    "data": [
+      "Get a fresh page of paper.",
+      "Try writing your name.",
+      "Try writing the numbers from 1 to 20.",
+      "Try writing the alphabet."
+    ]
+  },
 ];
