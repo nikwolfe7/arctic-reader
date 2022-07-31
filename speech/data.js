@@ -1,6 +1,27 @@
 /* Speech & Cognitive Therapy */
 const questions = [
 {
+    "title": "Cognitive: Counting",
+    "question_type": "simple",
+    "data": [
+        "Count backwards from 10 to 1.",
+        "Count to 20 by twos.",
+        "Count to 30 by threes.",
+        "Count to 40 by fours.",
+        "Count to 50 by fives.",
+        "What is the square root:<br>100",
+        "What is the square root:<br>81",
+        "What is the square root:<br>64",
+        "What is the square root:<br>49",
+        "What is the square root:<br>36",
+        "What is the square root:<br>25",
+        "What is the square root:<br>16",
+        "What is the square root:<br>9",
+        "What is the square root:<br>4",
+        "What is the square root:<br>1",
+    ]
+},
+{
     "title": "Cognitive: What Is This?",
     "question_type": "simple",
     "data": [
@@ -160,6 +181,18 @@ const questions = [
         "What day will it be tomorrow?",
         "Who is the president of the United States?",
         "Who is the prime minister of the United Kingdom?"
+    ]
+},
+{
+    "title": "Cognitive: General Reasoning",
+    "question_type": "simple",
+    "data": [
+        "Are grandparents typically younger than their grandchildren?",
+        "If you're chopping wood, what tool would you use?",
+        "If you take $100 to the store and buy a candy bar for $3 and a shirt for $20, how many dollars did you spend?",
+        "$23",
+        "How many dollars do you have left?",
+        "$77"
     ]
 },
 {

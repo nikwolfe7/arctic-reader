@@ -3,7 +3,7 @@ html, body {
 }
 a { text-decoration: none; }
 div.container {
-    /*height: 10em;*/
+    height: 10em;
     /*position: relative;*/
     /*position: absolute;
     margin: auto;

@@ -1,5 +1,18 @@
 /* Occupational Therapy */
 const questions = [
+{
+    "title": "Range of Motion: Arm & Hand",
+    "question_type": "simple",
+    "data": [
+      "Repeat 10x<img src='../img/forward-arm-lift.png'/>",
+      "Repeat 10x<img src='../img/elbow-stretch.png'/>",
+      "Repeat 10x<img src='../img/forearm-stretch.png'/>",
+      "Repeat 10x<img src='../img/fwd-and-bkwd-stretch.png'/>",
+      "Repeat 10x<img src='../img/rock-the-baby.png'/>",
+      "Repeat 10x<img src='../img/rotation-stretch.png'/>",
+      "Repeat 10x<img src='../img/wrist-side-to-side.png'/>"
+    ]
+  },
   {
     "title": "Occupational Therapy: Right hand",
     "question_type": "simple",
