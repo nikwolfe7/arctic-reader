@@ -4,16 +4,16 @@ const questions = [
     "title": "Cognitive: What Is This?",
     "question_type": "simple",
     "data": [
-        "<img src='https://www.webbcompare.com/img/webb/southern_nebula_2800.jpg'/>",
+        "<img src='https://stsci-opo.org/STScI-01G70BN48JR6M4ZTW3642X2D2H.png'/>",
         "The Southern Ring Nebula",
-        "<img src='https://www.webbcompare.com/img/webb/carina_2800.jpg'/>",
+        "<img src='https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/main_image_star-forming_region_carina_nircam_final-5mb.jpg'/>",
         "The Carina Nebula",
-        "<img src='https://www.webbcompare.com/img/webb/deep_field_2800.jpg'/>",
+        "<img src='https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/main_image_deep_field_smacs0723-5mb.jpg'/>",
         "The JWST Deep Field Image",
-        "<img src='https://www.webbcompare.com/img/webb/stephans_quintet_2800.jpg'/>",
+        "<img src='https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/main_image_galaxies_stephans_quintet_sq_nircam_miri_final-5mb.jpg'/>",
         "Stephan's Quintet",
         "<img src='../img/vegetables.jpeg'>",
-        "Vegetables: Cucumbers, Green Peppers, Okra, Squash, Green Beans, Cherry Tomatoes, Hierlom Tomatoes",
+        "Vegetables: Cucumbers, Green Peppers, Okra, Squash, Green Beans, Cherry Tomatoes, Heirloom Tomatoes",
     ]
 },
 {
