@@ -1,13 +1,6 @@
 /* Speech & Cognitive Therapy */
 const questions = [
 {
-    "title": "Written Exercise: Category Members",
-    "question_type": "simple",
-    "data": [
-        "A Number<br><br>starting with<br><br>F"
-    ]
-},
-{
     "title": "Cognitive: Counting",
     "question_type": "simple",
     "data": [
