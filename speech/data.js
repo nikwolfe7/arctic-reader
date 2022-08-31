@@ -1,6 +1,13 @@
 /* Speech & Cognitive Therapy */
 const questions = [
 {
+    "title": "Written Exercise: Category Members",
+    "question_type": "simple",
+    "data": [
+        "A Number<br><br>starting with<br><br>F"
+    ]
+},
+{
     "title": "Cognitive: Counting",
     "question_type": "simple",
     "data": [
@@ -41,13 +48,36 @@ const questions = [
     "title": "Speech: Get Loud",
     "question_type": "simple",
     "data": [
-    "As LOUD as you can:<br>&ldquo;Aaaaahhhh&rdquo;",
+        "As LOUD as you can:<br>&ldquo;Aaaaahhhh&rdquo;",
         "Practice clearing your throat.",
         "Puh-tuh-kuh<br>Puh-tuh-kuh<br>Puh-tuh-kuh",
         "Puh puh puh",
         "Tuh tuh tuh",
         "Kuh kuh kuh",
         "Red linoleum, yellow linoleum"
+    ]
+},
+{
+    "title": "Written Exercise: Opposites",
+    "question_type": "simple",
+    "data": [
+        "Sanitary",
+        "Great",
+        "Continue",
+        "Hamper",
+        "Significant",
+        "Here",
+        "Rumor",
+        "Shiny",
+        "Freeze",
+        "Strange",
+        "Mandatory",
+        "Healthy",
+        "Future",
+        "Borrow",
+        "Follow",
+        "Alone",
+        "Exit"
     ]
 },
 {
