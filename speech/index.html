@@ -8,13 +8,49 @@
 <link rel="stylesheet" href="../stylesheet.css">
 <script type="text/javascript" src="../cmu_data.js"></script>
 <script type="text/javascript" src="data.js"></script>
+<script type="text/javascript">
+/* image error handling - grab safe index range */
+function err(source) {
+    let index = Math.floor(Math.random() * 100);
+    console.log("picsum 404 error, getting image " + index + " instead.");
+    source.src = `https://picsum.photos/id/${index}/600/400`;
+    source.onerror = "";
+    return true;
+}
+</script>
 <script type="module">
 
 console.log("Loaded Questions array with: " + questions.length + " elements.");	
 
 var i = 0;
-var j = 0; 
+var j = 0;
 
+/* Add some images (max id is ~1070)*/
+var num_rand_images = 10, width = 600, height = 400;
+console.log("Sampling " + num_rand_images + " from lorem picsum and appending to questions...");
+
+var rand_images = {
+    "title": "Spoken: Describe the image out loud",
+    "question_type": "simple",
+    "data": getRandomImages(num_rand_images, 1070, width, height)
+} 
+
+var sentence_rand_images = {
+    "title": "Spoken: Make a sentence for this image",
+    "question_type": "simple",
+    "data": getRandomImages(num_rand_images, 1070, width, height)
+} 
+
+var writing_rand_images = {
+    "title": "Written: Describe the image in writing",
+    "question_type": "simple",
+    "data": getRandomImages(num_rand_images, 1070, width, height)
+} 
+
+questions.push(rand_images);
+questions.push(writing_rand_images);
+questions.push(sentence_rand_images);
+ 
 /* Add some artic sentence*/
 var num_arctic_sentences = 20;
 console.log("Sampling " + num_arctic_sentences + " from arctic dataset and appended to questions.");
@@ -40,6 +76,7 @@ function boundsCheck() {
 }
 
 
+/* Returns a randomly version of array */
 function shuffle(array) {
   let currentIndex = array.length,  randomIndex;
 
@@ -59,6 +96,7 @@ function shuffle(array) {
 }
 
 
+/* Returns a random subset of array arr of size n */
 function getRandom(arr, n) {
     let result = new Array(n),
         len = arr.length,
@@ -71,6 +109,18 @@ function getRandom(arr, n) {
         taken[x] = --len in taken ? taken[len] : len;
     }
     return result;
+}
+
+
+/* Returns a random set of image URLs from lorem picsum */
+function getRandomImages(num_images, max_index, width, height) {
+    let indices = Array(max_index).fill().map((element, index) => index);
+    let rand_subset = getRandom(indices, num_images);
+    for(let i = 0; i < rand_subset.length; ++i) {
+        let s = `<img src='https://picsum.photos/id/${rand_subset[i]}/${width}/${height}' onerror='err(this)'/>`;
+        rand_subset[i] = s; 
+    }
+    return rand_subset;
 }
 
 
