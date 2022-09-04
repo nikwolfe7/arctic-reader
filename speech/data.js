@@ -51,6 +51,39 @@ const questions = [
     ]
 },
 {
+    "title": "Written Exercise: Make a sentence for the verb",
+    "question_type": "simple",
+    "data": [
+        "Bring",
+        "Offer",
+        "Pass",
+        "Play",
+        "Read",
+        "Send",
+        "Sing",
+        "Teach",
+        "Write",
+        "Buy",
+        "Get",
+        "Leave",
+        "Make",
+        "Owe",
+        "Pay",
+        "Show",
+        "Refuse",
+        "Take",
+        "Kill",
+        "Hit",
+        "Break",
+        "Crush",
+        "Pull",
+        "Push",
+        "Cane",
+        "Tell",
+        "Eat"
+    ]
+},
+{
     "title": "Written Exercise: Opposites",
     "question_type": "simple",
     "data": [
