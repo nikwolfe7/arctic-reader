@@ -9,6 +9,22 @@
 <script type="text/javascript" src="../cmu_data.js"></script>
 <script type="text/javascript" src="data.js"></script>
 <script type="text/javascript">
+function getWords() {
+    let request = new XMLHttpRequest();
+    request.open("GET", "https://jsonplaceholder.typicode.com/users");
+    request.send();
+    request.onload = () => {
+        console.log(request);
+        if (request.status === 200) {
+            // by default the response comes in the string format, we need to parse the data into JSON
+            console.log(JSON.parse(request.response));
+        } else {
+            console.log(`error ${request.status} ${request.statusText}`);
+        }
+    }
+};
+</script>
+<script type="text/javascript">
 /* image error handling - grab safe index range */
 function err(source) {
     let index = Math.floor(Math.random() * 100);
@@ -53,11 +69,21 @@ var describe_hidden_rand_images = {
     "data": getDescriptionImages(num_rand_images, max_images, width, height)
 }
 
+var rand_words = {
+    "title": "Remember The Words",
+    "question_type": "simple",
+    "data": [
+    ""
+    ]
+}
+
 questions.push(rand_images);
 questions.push(writing_rand_images);
 questions.push(sentence_rand_images);
 questions.push(describe_hidden_rand_images);
  
+getWords();
+
 /* Add some artic sentence*/
 var num_arctic_sentences = 20;
 console.log("Sampling " + num_arctic_sentences + " from arctic dataset and appended to questions.");
