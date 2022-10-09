@@ -82,33 +82,21 @@ questions.push(describe_hidden_rand_images);
 
 
 /* Append word memorization task to question set */
-var word_length = 3, num_words = 4;
-console.log(`getting ${num_words} words of length ${word_length}...`);
-addWordMemorizationTask(word_length, num_words);
+var num_word_mem_questions = 5;
+while(num_word_mem_questions-- > 0) {
+    let word_length = 3, num_words = 5;
+    console.log(`getting ${num_words} words...`);
+    addWordMemorizationTask(word_length, num_words);
+}
 
 
-/* Append word memorization task to question set */
-var word_length = 4, num_words = 5;
-console.log(`getting ${num_words} words of length ${word_length}...`);
-addWordMemorizationTask(word_length, num_words);
-
-
-/* Append word memorization task to question set */
-var word_length = 5, num_words = 6;
-console.log(`getting ${num_words} words of length ${word_length}...`);
-addWordMemorizationTask(word_length, num_words);
-
-
-/* Append word memorization + image task to question set */
-var word_length = 4, num_words = 4;
-console.log(`getting ${num_words} words of length ${word_length}...`);
-addWordMemorizationPlusImageTask(word_length, num_words)
-
-
-/* Append word memorization + image task to question set */
-var word_length = 4, num_words = 4;
-console.log(`getting ${num_words} words of length ${word_length}...`);
-addWordMemorizationPlusImageTask(word_length, num_words)
+/* Append N word memorization + image tasks to question set */
+var num_word_img_mem_questions = 5;
+while(num_word_img_mem_questions-- > 0) {
+    let word_length = 4, num_words = 4;
+    console.log(`getting ${num_words} words...`);
+    addWordMemorizationPlusImageTask(word_length, num_words);
+}
 
 
 /* Add some artic sentence*/
@@ -175,7 +163,8 @@ function getRandom(arr, n) {
 
 /* Add a set of random words + image task to the questions set */
 function addWordMemorizationPlusImageTask(length = 4, number = 5) {
-    let params = `?length=${length}&number=${number}`;
+    // let params = `?length=${length}&number=${number}&lang=en`;
+    let params = `?number=${number}&lang=en`;
     let url = `https://random-word-api.herokuapp.com/word${params}`;
     fetch(url)
         .then(function(response) {
@@ -203,7 +192,8 @@ function addWordMemorizationPlusImageTask(length = 4, number = 5) {
 
 /* Add a set of random words to the questions set */
 function addWordMemorizationTask(length = 4, number = 5) {
-    let params = `?length=${length}&number=${number}`;
+    // let params = `?length=${length}&number=${number}&lang=en`;
+    let params = `?number=${number}&lang=en`;
     let url = `https://random-word-api.herokuapp.com/word${params}`;
     fetch(url)
         .then(function(response) {
