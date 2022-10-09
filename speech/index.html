@@ -26,30 +26,37 @@ var i = 0;
 var j = 0;
 
 /* Add some images (max id is ~1070)*/
-var num_rand_images = 10, width = 600, height = 400;
+var num_rand_images = 10, width = 600, height = 400, max_images = 1070;
 console.log("Sampling " + num_rand_images + " from lorem picsum and appending to questions...");
 
 var rand_images = {
     "title": "Spoken: Describe the image out loud",
     "question_type": "simple",
-    "data": getRandomImages(num_rand_images, 1070, width, height)
+    "data": getRandomImages(num_rand_images, max_images, width, height)
 } 
 
 var sentence_rand_images = {
     "title": "Spoken: Make a sentence for this image",
     "question_type": "simple",
-    "data": getRandomImages(num_rand_images, 1070, width, height)
+    "data": getRandomImages(num_rand_images, max_images, width, height)
 } 
 
 var writing_rand_images = {
     "title": "Written: Describe the image in writing",
     "question_type": "simple",
-    "data": getRandomImages(num_rand_images, 1070, width, height)
+    "data": getRandomImages(num_rand_images, max_images, width, height)
 } 
+
+var describe_hidden_rand_images = {
+    "title": "Remember: Look briefly then tap to hide",
+    "question_type": "simple",
+    "data": getDescriptionImages(num_rand_images, max_images, width, height)
+}
 
 questions.push(rand_images);
 questions.push(writing_rand_images);
 questions.push(sentence_rand_images);
+questions.push(describe_hidden_rand_images);
  
 /* Add some artic sentence*/
 var num_arctic_sentences = 20;
@@ -70,6 +77,7 @@ shuffle(questions);
 setTextFields();
 
 
+/* Check bounds of the data array */
 function boundsCheck() {
     i = Math.min(Math.max(i, 0), questions.length - 1);
     j = Math.min(Math.max(j, 0), questions[i].data.length - 1);
@@ -109,6 +117,22 @@ function getRandom(arr, n) {
         taken[x] = --len in taken ? taken[len] : len;
     }
     return result;
+}
+
+
+/* Returns a random set of images with text prompts */
+function getDescriptionImages(num_images, max_index, width, height) {
+    let rnd_images = getRandomImages(num_images, max_images, width, height);
+    let desc_images = new Array();
+    for(let i = 0; i < num_images; i++) {
+        let text_prompts = [
+            "Tap to see the next image.",
+            rnd_images[i],
+            "Describe the previous image.",
+        ];
+        desc_images.push(...text_prompts);
+    }
+    return desc_images;
 }
 
 
