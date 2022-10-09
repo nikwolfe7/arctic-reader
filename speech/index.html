@@ -99,6 +99,18 @@ console.log(`getting ${num_words} words of length ${word_length}...`);
 addWordMemorizationTask(word_length, num_words);
 
 
+/* Append word memorization + image task to question set */
+var word_length = 4, num_words = 4;
+console.log(`getting ${num_words} words of length ${word_length}...`);
+addWordMemorizationPlusImageTask(word_length, num_words)
+
+
+/* Append word memorization + image task to question set */
+var word_length = 4, num_words = 4;
+console.log(`getting ${num_words} words of length ${word_length}...`);
+addWordMemorizationPlusImageTask(word_length, num_words)
+
+
 /* Add some artic sentence*/
 var num_arctic_sentences = 20;
 console.log("Sampling " + num_arctic_sentences + " from arctic dataset and appended to questions.");
@@ -161,6 +173,34 @@ function getRandom(arr, n) {
 }
 
 
+/* Add a set of random words + image task to the questions set */
+function addWordMemorizationPlusImageTask(length = 4, number = 5) {
+    let params = `?length=${length}&number=${number}`;
+    let url = `https://random-word-api.herokuapp.com/word${params}`;
+    fetch(url)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(words) {
+            console.log(JSON.stringify(words));
+            let list_of_words = words.join(' &bull; ');
+            let rand_words = {
+                "title": "Memorization: Word List + Image",
+                "question_type": "simple",
+                "data": [
+                    "Tap to see a list of words.",
+                    list_of_words,
+                    "Describe the following image...",
+                    getRandomImages(1, max_images, width, height),
+                    "Can you recite the list of words?",
+                    list_of_words,
+                ]
+            };
+            questions.push(rand_words);
+        });
+}
+
+
 /* Add a set of random words to the questions set */
 function addWordMemorizationTask(length = 4, number = 5) {
     let params = `?length=${length}&number=${number}`;
@@ -179,6 +219,7 @@ function addWordMemorizationTask(length = 4, number = 5) {
                     "Tap to see a list of words.",
                     list_of_words,
                     "Can you recite the list of words?",
+                    list_of_words,
                 ]
             };
             questions.push(rand_words);
