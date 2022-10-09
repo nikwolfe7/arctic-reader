@@ -9,19 +9,25 @@
 <script type="text/javascript" src="../cmu_data.js"></script>
 <script type="text/javascript" src="data.js"></script>
 <script type="text/javascript">
-function getWords() {
+function getWords(length = 4, number = 5) {
     let request = new XMLHttpRequest();
-    request.open("GET", "https://jsonplaceholder.typicode.com/users");
+    let params = `?length=${length}&number=${number}`;
+    let url = `https://random-word-api.herokuapp.com/word${params}`;
+    request.open("GET", url, false);
     request.send();
     request.onload = () => {
         console.log(request);
         if (request.status === 200) {
             // by default the response comes in the string format, we need to parse the data into JSON
-            console.log(JSON.parse(request.response));
+            let result = JSON.parse(request.response);
+            console.log(result);
+            return result;
         } else {
             console.log(`error ${request.status} ${request.statusText}`);
         }
     }
+    // default array. whatever. 
+    // return ["boat", "cheese", "dog", "fish", "rocket"]
 };
 </script>
 <script type="text/javascript">
@@ -69,20 +75,29 @@ var describe_hidden_rand_images = {
     "data": getDescriptionImages(num_rand_images, max_images, width, height)
 }
 
-var rand_words = {
-    "title": "Remember The Words",
-    "question_type": "simple",
-    "data": [
-    ""
-    ]
-}
-
 questions.push(rand_images);
 questions.push(writing_rand_images);
 questions.push(sentence_rand_images);
 questions.push(describe_hidden_rand_images);
- 
-getWords();
+
+
+/* Append word memorization task to question set */
+var word_length = 3, num_words = 4;
+console.log(`getting ${num_words} words of length ${word_length}...`);
+addWordMemorizationTask(word_length, num_words);
+
+
+/* Append word memorization task to question set */
+var word_length = 4, num_words = 5;
+console.log(`getting ${num_words} words of length ${word_length}...`);
+addWordMemorizationTask(word_length, num_words);
+
+
+/* Append word memorization task to question set */
+var word_length = 5, num_words = 6;
+console.log(`getting ${num_words} words of length ${word_length}...`);
+addWordMemorizationTask(word_length, num_words);
+
 
 /* Add some artic sentence*/
 var num_arctic_sentences = 20;
@@ -143,6 +158,31 @@ function getRandom(arr, n) {
         taken[x] = --len in taken ? taken[len] : len;
     }
     return result;
+}
+
+
+/* Add a set of random words to the questions set */
+function addWordMemorizationTask(length = 4, number = 5) {
+    let params = `?length=${length}&number=${number}`;
+    let url = `https://random-word-api.herokuapp.com/word${params}`;
+    fetch(url)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(words) {
+            console.log(JSON.stringify(words));
+            let list_of_words = words.join(' &bull; ');
+            let rand_words = {
+                "title": "Memorization: Word List",
+                "question_type": "simple",
+                "data": [
+                    "Tap to see a list of words.",
+                    list_of_words,
+                    "Can you recite the list of words?",
+                ]
+            };
+            questions.push(rand_words);
+        });
 }
 
 
