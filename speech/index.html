@@ -9,32 +9,10 @@
 <script type="text/javascript" src="../cmu_data.js"></script>
 <script type="text/javascript" src="data.js"></script>
 <script type="text/javascript">
-function getWords(length = 4, number = 5) {
-    let request = new XMLHttpRequest();
-    let params = `?length=${length}&number=${number}`;
-    let url = `https://random-word-api.herokuapp.com/word${params}`;
-    request.open("GET", url, false);
-    request.send();
-    request.onload = () => {
-        console.log(request);
-        if (request.status === 200) {
-            // by default the response comes in the string format, we need to parse the data into JSON
-            let result = JSON.parse(request.response);
-            console.log(result);
-            return result;
-        } else {
-            console.log(`error ${request.status} ${request.statusText}`);
-        }
-    }
-    // default array. whatever. 
-    // return ["boat", "cheese", "dog", "fish", "rocket"]
-};
-</script>
-<script type="text/javascript">
 /* image error handling - grab safe index range */
 function err(source) {
     let index = Math.floor(Math.random() * 100);
-    console.log("picsum 404 error, getting image " + index + " instead.");
+    console.error("picsum 404 error, getting image " + index + " instead.");
     source.src = `https://picsum.photos/id/${index}/600/400`;
     source.onerror = "";
     return true;
@@ -80,28 +58,35 @@ questions.push(writing_rand_images);
 questions.push(sentence_rand_images);
 questions.push(describe_hidden_rand_images);
 
+/* Subset of Datamuse rel codes */
+const rel_codes = ["jja","jjb","syn","trg","spc","gen","com","bga","rhy","nry"];
+
+/* Default word lists */
+const groceries = ["apples","bananas","cheese","oranges","milk"];
+const shopping = ["scissors","toilet paper","pencils","erasers","napkins"];
+const todo = ["clothes","stamps","mail","card","donation"];
 
 /* Append word memorization task to question set */
 var num_word_mem_questions = 5;
 while(num_word_mem_questions-- > 0) {
-    let word_length = 3, num_words = 5;
+    let num_words = 5;
     console.log(`getting ${num_words} words...`);
-    addWordMemorizationTask(word_length, num_words);
+    getRandomWords(num_words, createWordMemorizationTask);
 }
 
 
 /* Append N word memorization + image tasks to question set */
 var num_word_img_mem_questions = 5;
 while(num_word_img_mem_questions-- > 0) {
-    let word_length = 4, num_words = 4;
+    let num_words = 4;
     console.log(`getting ${num_words} words...`);
-    addWordMemorizationPlusImageTask(word_length, num_words);
+    getRandomWords(num_words, createWordMemorizationPlusImageTask);
 }
 
 
 /* Add some artic sentence*/
 var num_arctic_sentences = 20;
-console.log("Sampling " + num_arctic_sentences + " from arctic dataset and appended to questions.");
+console.log(`Sampling ${num_arctic_sentences} from arctic dataset and appended to questions.`);
 
 var arctic = {
     "title": "Speech: Read Out Loud",
@@ -161,58 +146,107 @@ function getRandom(arr, n) {
 }
 
 
-/* Add a set of random words + image task to the questions set */
-function addWordMemorizationPlusImageTask(length = 4, number = 5) {
-    // let params = `?length=${length}&number=${number}&lang=en`;
-    let params = `?number=${number}&lang=en`;
-    let url = `https://random-word-api.herokuapp.com/word${params}`;
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(words) {
-            console.log(JSON.stringify(words));
-            let list_of_words = words.join(' &bull; ');
-            let rand_words = {
-                "title": "Memorization: Word List + Image",
-                "question_type": "simple",
-                "data": [
-                    "Tap to see a list of words.",
-                    list_of_words,
-                    "Describe the following image...",
-                    getRandomImages(1, max_images, width, height),
-                    "Can you recite the list of words?",
-                    list_of_words,
-                ]
-            };
-            questions.push(rand_words);
-        });
+/* Get a random letter of the alphabet */
+function getRandomLetter() {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  return alphabet[Math.floor(Math.random() * alphabet.length)]
 }
 
 
-/* Add a set of random words to the questions set */
-function addWordMemorizationTask(length = 4, number = 5) {
-    // let params = `?length=${length}&number=${number}&lang=en`;
-    let params = `?number=${number}&lang=en`;
-    let url = `https://random-word-api.herokuapp.com/word${params}`;
+/* Create word memorization task */
+function createWordMemorizationTask(word_array) {
+    let list_of_words = word_array.join(' &bull; ');
+    let rand_words = {
+        "title": "Memorization: Word List",
+        "question_type": "simple",
+        "data": [
+            "Tap to see a list of words.",
+            list_of_words,
+            "Can you recite the list of words?",
+            list_of_words,
+        ]
+    };
+    return rand_words;
+
+}
+
+
+/* Create word memorization + image task */
+function createWordMemorizationPlusImageTask(word_array) {
+    let list_of_words = word_array.join(' &bull; ');
+    let rand_words = {
+        "title": "Memorization: Word List + Image",
+        "question_type": "simple",
+        "data": [
+            "Tap to see a list of words.",
+            list_of_words,
+            "Describe the following image...",
+            getRandomImages(1, max_images, width, height),
+            "Can you recite the list of words?",
+            list_of_words,
+        ]
+    };
+    return rand_words;
+
+}
+
+
+/* Get some random words from datamuse */
+function getRandomWords(number = 5, callback) {
+    /* get 10 words based on a random letter */
+    let letter = getRandomLetter();
+    let params = `sp=${letter}*&max=10`;
+    let url = `https://api.datamuse.com/words?${params}`;
+
     fetch(url)
         .then(function(response) {
             return response.json();
         })
         .then(function(words) {
-            console.log(JSON.stringify(words));
-            let list_of_words = words.join(' &bull; ');
-            let rand_words = {
-                "title": "Memorization: Word List",
-                "question_type": "simple",
-                "data": [
-                    "Tap to see a list of words.",
-                    list_of_words,
-                    "Can you recite the list of words?",
-                    list_of_words,
-                ]
-            };
-            questions.push(rand_words);
+            /* return the word elements from the array */
+            console.log(`Letter '${letter}' words:` + JSON.stringify(words));
+            let arr = words.map(function(w) {
+                return w.word
+            });
+            /* 
+                Use a random word as a topic, then derive similar topic words.
+                If the API didn't return anything useful, select from a default
+                generic set of topics. 
+            */
+            let dt = ["movies", "music", "animals", "countries", "sports"];
+            let topic = arr.length > 0 ? getRandom(arr, 1)[0] : getRandom(dt, 1)[0];
+
+            /* Pick one of several types of matches */
+            // let code = getRandom(rel_codes, 1)[0];  
+            let code = "topics";
+
+            // params = `rel_${code}=${topic}&max=${number}`;
+            params = `${code}=${topic}&max=${number}`;
+            url = `https://api.datamuse.com/words?${params}`;
+
+            console.log(`URL: ${url}`);
+
+            /* Call API again with topic words */
+            fetch(url).then(function(response) {
+                    return response.json();
+                })
+                .then(function(words) {
+                    console.log(`Topic '${topic}' + code: '${code}' words: ` + JSON.stringify(words));
+                    arr = words.map(function(w) {
+                        return w.word
+                    });
+
+                    if (arr.length == 0) {
+                        console.error(`API FAILURE: Topic '${topic}' + code: ${code}`);
+                    }
+
+                    /* If the API fails, just pick one of the default word lists */
+                    arr = arr.length > 0 ? arr : getRandom([groceries, shopping, todo], 1)[0]
+                    let question_task = callback(arr);
+                    
+                    /* Push task onto questions array */
+                    questions.push(question_task);
+                });
         });
 }
 
