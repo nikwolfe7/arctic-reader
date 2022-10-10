@@ -193,9 +193,9 @@ function createWordMemorizationPlusImageTask(word_array) {
 
 /* Get some random words from datamuse */
 function getRandomWords(number = 5, callback) {
-    /* get 10 words based on a random letter */
+    /* get 100 words based on a random letter */
     let letter = getRandomLetter();
-    let params = `sp=${letter}*&max=10`;
+    let params = `sp=${letter}*&max=100`;
     let url = `https://api.datamuse.com/words?${params}`;
 
     fetch(url)
