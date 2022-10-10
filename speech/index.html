@@ -246,6 +246,9 @@ function getRandomWords(number = 5, callback) {
                     
                     /* Push task onto questions array */
                     questions.push(question_task);
+
+                    /* need to reshuffle after promise due to delay */
+                    shuffle(questions);
                 });
         });
 }
