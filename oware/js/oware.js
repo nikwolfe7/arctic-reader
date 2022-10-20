@@ -2,7 +2,8 @@
 $(window).load(function(){  
     // this delay is here because the image 
 	// takes a while to load in Ghana
-    $("#loading").fadeOut("slow");
+	$("#message").html('<h2>Loading, please wait...</h2><img src="img/loadbar.gif"/>');
+    $("#message").fadeOut("slow");
 });
 $(document).ready(function() {
 	var type; setGameType();			// game type, play against
@@ -29,6 +30,11 @@ $(document).ready(function() {
 		setGameType();			// set game type
 		setDifficulty();		// set AI difficulty
 	});
+
+	// user clicks message button
+	$("#message").click(function(){
+		$("#message").fadeOut("fast");
+	});
 	
 	// user checks new difficulty level
 	$("input[name=diff]").click(function(){
@@ -48,6 +54,11 @@ $(document).ready(function() {
 		$("#difficulty").slideDown();
 		setDifficulty();
 	});
+
+	function displayMessage(message, time = 500) {
+		$("#message").html(`<h2>${message}</h2>`);
+		$("#message").fadeIn("fast").delay(time).fadeOut();
+	}
 	
 	function setDifficulty() {
 		difficulty = Math.floor($("input[name=diff]:checked").val());
@@ -62,10 +73,10 @@ $(document).ready(function() {
 		if( gameover ) { return; }
 		var number = Math.floor($(this).attr("id").split("btn")[1]);
 		if( turn && number > p1End ) {
-			alert("Invalid move!");
+			displayMessage("Invalid Move!");
 			return;
 		} else if( !turn && number <= p1End ) { 
-			alert("Invalid move!");
+			displayMessage("Invalid Move!");
 			return;
 		}
 		move(number);
@@ -339,7 +350,7 @@ $(document).ready(function() {
 		var thinking = "Computer is thinking...";	
 		$("#loadbar").removeAttr("hidden");				// show loadbar
 		$("#loading-msg").text(thinking);				// display computer thinking msg	
-		$("#loading").fadeIn().delay(500).fadeOut();	// show "thought bubble"
+		$("#message").fadeIn().delay(500).fadeOut();	// show "thought bubble"
 	}
 	
 	/********* END ARTIFICIAL INTELLIGENCE *******/
@@ -405,7 +416,7 @@ $(document).ready(function() {
 			done = true; // reset the board to 6-6
 		}
 		refreshAll();
-		alert(winStr);
+		displayMessage(winStr);
 		if( !done ) {
 			initialize();			// continue the game
 		} else {
@@ -491,7 +502,7 @@ $(document).ready(function() {
 					}
 				}
 				// set the player heading
-				player += "<h2>Player 1's Turn</h2>";
+				player += "<h2>Player 1&rsquo;s Turn</h2>";
 			} else {
 				// set the special CSS hover class
 				for(var i = 0; i < board.length; i++) {
@@ -503,7 +514,7 @@ $(document).ready(function() {
 					}
 				}
 				// set the player heading
-				player += "<h2>Player 2's Turn</h2>";
+				player += "<h2>Player 2&rsquo;s Turn</h2>";
 			}
 			return player;
 		}).slideDown();

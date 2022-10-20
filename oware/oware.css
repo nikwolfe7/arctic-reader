@@ -1,10 +1,31 @@
-a { text-decoration:none; color:black; }
+html {
+	height: 100%;
+	font-family: Georgia;
+	font-size: 100%;
+	justify-content: center;
+	width:100%;
+}
+html, body {
+  overflow-x: hidden;
+}
+body {
+  position: relative;
+}
+a { 
+	text-decoration:none; 
+	color:black; 
+	font-size: 2vw;
+}	
 #container {
 	margin-right:auto;
 	margin-left:auto;
-	width:70em;
+	/*width:100%;*/
+	/*display: flex;*/
+	justify-content: center;
+	align-items: center;
 	text-align:center;
-	font-family:arial;
+	font-family: Georgia;
+	/*font-size: 1vw;*/
 }
 .button {
 	/*width:10em;
@@ -23,47 +44,57 @@ a { text-decoration:none; color:black; }
 	font-size:1em;
 }
 table {
-	margin-left:5.5em;
+	/*margin-left:5.5em;*/
+	margin: auto;
+	justify-content: center;
 	border:3px solid #b39045;
 	border-radius:5em;
 	padding:1em;
 	background-color:rgb(245, 239, 196);
 	box-shadow:0.5em 0.5em 1em #b39045;
 }
-.side { border:3px solid deepskyblue; }
-.side:hover { box-shadow: 0 0 1em #937035; cursor:pointer; }
+.side { 
+	border:3px solid deepskyblue; }
+.side:hover { 
+	box-shadow: 0 0 1em #937035; 
+	cursor:pointer; }
 #bottom { 
-	margin-left:5em;
-	width:60em; 
+	margin:auto;
+	justify-content: center;
+	width:60rem;
+	height:10rem;
 }
-#newgame { font-size:1.5em; }
+#newgame { 
+	font-size:1.5vw; 
+}
 #p1Score, #p2Score {
-	font-size:3em;
+	font-size:5.5vw;
 }	
 #player { 
 	text-align:center;
-	float:left;
-	width:19.5em;
+	justify-content: center;
+	width:20rem;
 }
 #bottom-left, #bottom-middle { 
 	text-align:center;
 	float:left; 
 	height:10em;
 }
-#bottom-left p, #bottom-right p { font-size:1em; } 
-#bottom-left { width:20em; }
+#bottom-left p, #bottom-right p { font-size:2vw; } 
+#bottom-left { width:20rem; }
 #bottom-middle { 
-	width:19.5em; 
-	height:100%; 
-	margin-top:2.2em;
+	width:20rem; 
+	height:100%;
+	justify-content: center;
+	margin-top:1rem;
 }
 #bottom-right{
 	text-align:center;
-	float:right; 
-	width:20em; 
+	float: right;
+	width:20rem; 
 	height:10em;
 }
-div#loading {  
+div#message {  
 	left:50%; 
 	margin-left:-160px; 
 	position:absolute; 
@@ -71,11 +102,13 @@ div#loading {
 	margin-top:11em; 
 	border:3px solid #b39045; 
 	border-radius:15px;
-	padding:0em 0em 1em 0em;  
+	padding:1rem;
 	background-color:rgb(255, 249, 206);
 	box-shadow:0em 0em 1em #937025;
 	text-align:center; 
-	font:1em Arial; 
+	align-items: center;
+	font:2vw;
+	font-family: Georgia; 
 }
 #newgame {
 	background-color:rgb(255, 249, 206);
@@ -97,15 +130,15 @@ div#loading {
 	border-radius:1em;
 	background-color:rgb(255, 249, 206);
 	border:3px solid #b39045;
-	box-shadow:0 0 8px #735005;
-	font-size:1em;
+	box-shadow:0 0 10px #735005;
+	font-size:1vw;
 	padding:0 0em 0.5em 0em;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:-1em;
-	margin-bottom:5em;
+	/*margin-top:-1em;*/
+	margin-bottom:5rem;
 }
-#chooseGameType h2{ margin-bottom:0.4em; }
+#chooseGameType h2{ font-size: 2vw;}
 #chooseGameType p { margin-bottom:0.5em; }
 #difficulty ul { 
 	list-style:none; 
