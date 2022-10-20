@@ -338,19 +338,11 @@ $(document).ready(function() {
 	function doDelayedComputerMove() {
 		var duration = Math.floor(Math.random()*1000+750);	// random number between 750 and 1750 ms
 		if( duration > 1200 ) {
-			showComputerThinking();							// make "thought bubble" pop up
+			displayMessage("Computer is thinking...");		// make "thought bubble" pop up
 		}
 		timer = setTimeout(function() {			
 			computerMove();									// make AI-calculated move
 		}, duration);										// delay a second, create illusion of thought...
-	}
-	
-	// pop up window showing computer is thinking
-	function showComputerThinking() {
-		var thinking = "Computer is thinking...";	
-		$("#loadbar").removeAttr("hidden");				// show loadbar
-		$("#loading-msg").text(thinking);				// display computer thinking msg	
-		$("#message").fadeIn().delay(500).fadeOut();	// show "thought bubble"
 	}
 	
 	/********* END ARTIFICIAL INTELLIGENCE *******/
