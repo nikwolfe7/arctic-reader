@@ -11,10 +11,10 @@ html, body {
 body {
   position: relative;
 }
-a { 
+h1 { 
 	text-decoration:none; 
 	color:black; 
-	font-size: 2vw;
+	font-size: 4vw;
 }	
 #container {
 	margin-right:auto;
