@@ -4,9 +4,11 @@ html {
 	font-size: 100%;
 	justify-content: center;
 	width:100%;
+	margin: 0;
 }
 html, body {
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 body {
   position: relative;
@@ -14,10 +16,12 @@ body {
 h1 { 
 	text-decoration:none; 
 	color:black; 
-	font-size: 4vw;
-}	
-#container {
-	margin-right:auto;
+	font-size: 3vw;
+}
+#top {
+	display: flex;
+	/*margin-top: -2rem;*/
+	/*margin-right:auto;
 	margin-left:auto;
 	/*width:100%;*/
 	/*display: flex;*/
@@ -25,7 +29,17 @@ h1 {
 	align-items: center;
 	text-align:center;
 	font-family: Georgia;
+}	
+#container {
+	margin:auto;
+	/*width:100%;*/
+	/*display: flex;*/
+	justify-content: center;
+	align-items: center;
+	text-align:center;
+	font-family: Georgia;
 	/*font-size: 1vw;*/
+	height:650px;
 }
 .button {
 	/*width:10em;
