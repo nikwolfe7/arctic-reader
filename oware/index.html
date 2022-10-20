@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<title>Play Oware!</title>
+<link rel="stylesheet" type="text/css" href="oware.css"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/oware.js"></script>
+</head>
+<body>
+<div id="loading">
+<p id="loading-msg">Loading, please wait...</p>
+<img id="loadbar" src="img/loadbar.gif" alt="loading..." />
+</div>
+<div id="container">
+<a href="http://en.wikipedia.org/wiki/Oware" target="_blank"><h1>Oware</h1></a>
+<table id="board">
+<tr>
+	<td><input type="button" class="button"  id="btn11" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn10" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn9" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn8" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn7" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn6" disabled="true"/></td>
+</tr>
+<tr>
+	<td><input type="button" class="button"  id="btn0" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn1" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn2" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn3" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn4" disabled="true"/></td>
+	<td><input type="button" class="button"  id="btn5" disabled="true"/></td>
+</tr>
+</table>
+
+<div id="bottom">
+<div id="bottom-left">
+	<p>Player 1 Score</p>
+	<span id="p1Score">0</span>
+</div>
+
+<div id="bottom-middle">
+<div id="chooseGameType">
+<div id="player">&nbsp;</div>
+<p>Play against:</p>
+<input type="radio" name="gameType" id="gameTypeHuman" value="human" checked="true"/>
+<label for="gameTypeHuman">Human</label>
+<input type="radio" name="gameType" id="gameTypeComputer" value="computer"/>
+<label for="gameTypeComputer">Computer</label>
+<div id="difficulty">
+<ul>
+<li><input type="radio" name="diff" id="diffEasy" value="1" checked="true"/>
+<label for="diffEasy">Easy</label></li>
+<li><input type="radio" name="diff" id="diffMedium" value="2"/>
+<label for="diffMedium">Medium</label></li>
+<li><input type="radio" name="diff" id="diffHard" value="3"/>
+<label for="diffHard">Bring it!</label></li>
+</ul>
+</div>
+<input type="button" id="newgame" value="New Game!"/>
+</div>
+</div>
+<div id="bottom-right">
+	<p>Player 2 Score</p>
+	<span id="p2Score">0</span>
+</div>
+</div><!-- end bottom -->
+</div><!-- end container -->
+</body>
+</html>
