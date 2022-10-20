@@ -55,9 +55,12 @@ $(document).ready(function() {
 		setDifficulty();
 	});
 
-	function displayMessage(message, time = 500) {
-		$("#message").html(`<h2>${message}</h2>`);
-		$("#message").fadeIn("fast").delay(time).fadeOut();
+	function displayMessage(message, time = 500) {		
+		// only display if element is already hidden
+		if ($("#message").is(":hidden")) {
+			$("#message").html(`<h2>${message}</h2>`);
+			$("#message").fadeIn("fast").delay(time).fadeOut();	
+		}
 	}
 	
 	function setDifficulty() {
@@ -407,8 +410,8 @@ $(document).ready(function() {
 			winStr += "Tie Game!";
 			done = true; // reset the board to 6-6
 		}
+		displayMessage(winStr, 3000); 
 		refreshAll();
-		displayMessage(winStr, 3000);
 		if( !done ) {
 			initialize();			// continue the game
 		} else {
