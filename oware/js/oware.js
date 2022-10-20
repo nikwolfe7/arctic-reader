@@ -408,7 +408,7 @@ $(document).ready(function() {
 			done = true; // reset the board to 6-6
 		}
 		refreshAll();
-		displayMessage(winStr);
+		displayMessage(winStr, 3000);
 		if( !done ) {
 			initialize();			// continue the game
 		} else {
