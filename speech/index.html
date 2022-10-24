@@ -44,7 +44,8 @@ var num_arctic_sentences = 3; // number of arctic sentences to read
 var num_questions_data_elements = 3; // number of questions from data.js
 var num_simple_question_type_elements = 3; // for simple question types, sample N 
 var num_math_tasks = 1; // number of math reasoning tasks
-
+var num_div_naming_tasks = 1; // divergent naming categories
+var num_div_naming_tasks_letters = 3; // number of letters to use for div naming
 
 /* ----------------------------------------------------------- */
 /* *************** DEFAULT TASKS INITIALIZATION ************** */
@@ -85,30 +86,103 @@ var end_task = {
 
 
 /* ----------------------------------------------------------- */
+/* ******** DIVERGENT NAMING TASKS INITIALIZATION ************ */
+/* ----------------------------------------------------------- */
+
+var div_naming_tasks = new Array();
+
+const naming_task_params = [
+    {
+        "topic": "Things you do in winter",
+        "query": "winter activites"
+    },
+    {
+        "topic": "Holidays",
+        "query": "holidays"
+    },
+    {
+        "topic": "Cold Weather Animals",
+        "query": "artic animals"
+    },
+    {
+        "topic": "Animals",
+        "query": "animal species"
+    },
+    {
+        "topic": "Toiletries",
+        "query": "toiletries"
+    },
+    {
+        "topic": "Countries",
+        "query": "countries"
+    },
+    {
+        "topic": "Winter Clothing",
+        "query": "winter clothing"
+    },
+    {
+        "topic": "Foods",
+        "query": "things you eat"
+    },
+    {
+        "topic": "Places to Eat",
+        "query": "restaurants"
+    },
+    {
+        "topic": "Amusement Park",
+        "query": "amuesment park"
+    },
+    {
+        "topic": "Transportation",
+        "query": "transportation"
+    },
+    {
+        "topic": "Tools",
+        "query": "tools and utensils"
+    }
+];
+
+var naming_task_param_subset = getRandomSubset(naming_task_params, num_div_naming_tasks);
+
+for (let i = 0; i < naming_task_param_subset.length; i++) {
+    let e = naming_task_param_subset[i];
+    let data = await getDivergentNamingCategories(e.query, num_div_naming_tasks_letters);
+    div_naming_tasks.push({
+        "title": `Divergent Naming: ${e.topic}`,
+        "question_type": "ordered",
+        "data": data
+    });
+}
+
+
+/* ----------------------------------------------------------- */
 /* ******** IMAGE DESCRIPTION TASKS INITIALIZATION *********** */
 /* ----------------------------------------------------------- */
 
 /* Add some images (max id is ~1070)*/
-var width = 600, height = 400, max_images = 1070;
+var width = 600,
+    height = 400,
+    max_images = 1070;
+
 console.log("Sampling " + num_rand_images + " from lorem picsum and appending to questions...");
 
 var rand_images = {
     "title": "Spoken: Describe the image out loud",
     "question_type": "simple",
     "data": getRandomImages(num_rand_images, max_images, width, height)
-} 
+}
 
 var sentence_rand_images = {
     "title": "Spoken: Make a sentence for this image",
     "question_type": "simple",
     "data": getRandomImages(num_rand_images, max_images, width, height)
-} 
+}
 
 var writing_rand_images = {
     "title": "Written: Describe the image in writing",
     "question_type": "simple",
     "data": getRandomImages(num_rand_images, max_images, width, height)
-} 
+}
 
 var describe_hidden_rand_images = {
     "title": "Remember: Look briefly then tap to hide",
@@ -126,31 +200,30 @@ image_questions.push(describe_hidden_rand_images);
 image_questions = getRandomSubset(image_questions, num_image_questions);
 
 
-
 /* ----------------------------------------------------------- */
 /* ******** WORD MEMORIZATION TASKS INITIALIZATION *********** */
 /* ----------------------------------------------------------- */
 
 /* Subset of Datamuse rel codes */
 // const rel_codes = ["jja","jjb","syn","trg","spc","gen","com","bga","rhy","nry"];
-const rel_codes = ["jja","jjb","syn","trg"]; // simplified subset
+const rel_codes = ["jja", "jjb", "syn", "trg"]; // simplified subset
 
 /* Default word lists */
-const groceries = ["apples","bananas","cheese","oranges","milk"];
-const shopping = ["scissors","toilet paper","pencils","erasers","napkins"];
-const todo = ["clothes","stamps","mail","card","donation"];
+const groceries = ["apples", "bananas", "cheese", "oranges", "milk"];
+const shopping = ["scissors", "toilet paper", "pencils", "erasers", "napkins"];
+const todo = ["clothes", "stamps", "mail", "card", "donation"];
 
 var mem_questions = new Array();
 
 /* Append word memorization task to question set */
-while(num_word_mem_questions-- > 0) {
+while (num_word_mem_questions-- > 0) {
     let num_words = 4;
     console.log(`getting ${num_words} words...`);
     mem_questions.push(await createWordMemorizationTask(num_words));
 }
 
 /* Append N word memorization + image tasks to question set */
-while(num_word_img_mem_questions-- > 0) {
+while (num_word_img_mem_questions-- > 0) {
     let num_words = 4;
     console.log(`getting ${num_words} words...`);
     mem_questions.push(await createWordMemorizationPlusImageTask(num_words));
@@ -210,30 +283,35 @@ while (num_math_tasks-- > 0) {
 /* ----------------------------------------------------------- */
 
 // add image questions & mem questions to list
-image_questions.forEach(function(e) { 
-    shuffled_content.push(e); 
+image_questions.forEach(function(e) {
+    shuffled_content.push(e);
 });
 
 mem_questions.forEach(function(e) {
-    shuffled_content.push(e);  
+    shuffled_content.push(e);
 });
 
 math_tasks.forEach(function(e) {
-    shuffled_content.push(e);  
+    shuffled_content.push(e);
+});
+
+div_naming_tasks.forEach(function(e) {
+    shuffled_content.push(e);
 });
 
 // shuffle the shuffled content
 shuffle(shuffled_content);
 
 // Question Setup
+//questions.push(div_naming_tasks[0]);
 questions.push(warm_up);
 questions.push(arctic);
 
 shuffled_content.forEach(function(e) {
-    questions.push(e);
     if (Math.random() < 0.85) {
-        questions.push(break_task);    
+        questions.push(break_task);
     }
+    questions.push(e);
 });
 
 questions.push(end_task);
@@ -256,21 +334,23 @@ function boundsCheck() {
 
 /* Returns a randomly version of array */
 function shuffle(array) {
-  let currentIndex = array.length,  randomIndex;
+    let currentIndex = array.length,
+        randomIndex;
 
-  // While there remain elements to shuffle.
-  while (currentIndex != 0) {
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
 
-    // Pick a remaining element.
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
 
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]
+        ];
+    }
 
-  return array;
+    return array;
 }
 
 /* Returns a random subset of array arr of size n */
@@ -278,7 +358,7 @@ function getRandomSubset(arr, n) {
     let result = new Array(n),
         len = arr.length,
         taken = new Array(len);
-    /* bound check */    
+    /* bound check */
     n = n > len ? len : n;
     while (n--) {
         var x = Math.floor(Math.random() * len);
@@ -294,7 +374,7 @@ function getAndRemoveRandomArrayElement(arr) {
     let i = Math.floor(Math.random() * arr.length);
     let elem = arr[i]; // retrieve element
     arr.splice(i, 1); // remove element
-    return elem; 
+    return elem;
 }
 
 
@@ -309,8 +389,8 @@ function getRandomArrayElement(arr) {
 
 /* Get a random letter of the alphabet */
 function getRandomLetter() {
-  let alphabet = "abcdefghijklmnopqrstuvwxyz";
-  return alphabet[Math.floor(Math.random() * alphabet.length)]
+    let alphabet = "abcdefghijklmnopqrstuvwxyz";
+    return alphabet[Math.floor(Math.random() * alphabet.length)]
 }
 
 
@@ -361,7 +441,7 @@ async function getRandomWords(number = 5) {
 
     let response = await fetch(url);
     let words = await response.json();
-        
+
     /* return the word elements from the array */
     console.log(`Letter '${letter}' words:` + JSON.stringify(words));
 
@@ -404,7 +484,7 @@ async function getRandomWords(number = 5) {
     arr = arr.length > 0 ? arr : getRandomSubset([groceries, shopping, todo], 1)[0]
 
     /* return promise array */
-    return arr; 
+    return arr;
 }
 
 
@@ -412,12 +492,12 @@ async function getRandomWords(number = 5) {
 function getDescriptionImages(num_images, max_index, width, height) {
     let rnd_images = getRandomImages(num_images, max_images, width, height);
     let desc_images = new Array();
-    for(let i = 0; i < num_images; i++) {
+    for (let i = 0; i < num_images; i++) {
         let text_prompts = [
             "Tap to see the next image.",
             rnd_images[i],
             "Describe the previous image.",
-	    rnd_images[i],
+            rnd_images[i],
         ];
         desc_images.push(...text_prompts);
     }
@@ -429,9 +509,9 @@ function getDescriptionImages(num_images, max_index, width, height) {
 function getRandomImages(num_images, max_index, width, height) {
     let indices = Array(max_index).fill().map((element, index) => index);
     let rand_subset = getRandomSubset(indices, num_images);
-    for(let i = 0; i < rand_subset.length; ++i) {
+    for (let i = 0; i < rand_subset.length; ++i) {
         let s = `<img src='https://picsum.photos/id/${rand_subset[i]}/${width}/${height}' onerror='err(this)'/>`;
-        rand_subset[i] = s; 
+        rand_subset[i] = s;
     }
     return rand_subset;
 }
@@ -460,22 +540,23 @@ async function getNTopicWords(adjective = "fresh", topic = "fruit", number = 2) 
 
     /* If the API fails, just pick one of the default word lists */
     arr = arr.length > 0 ? getRandomSubset(arr, number) : ["strawberries", "bananas", "candy bars"];
-    
+
     /* return promise array */
-    return arr; 
+    return arr;
 }
 
 
 /* Function to generate random number */
-function randomNumber(min, max) { 
+function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
-} 
+}
 
 
 /* Returns a math word problem with new numbers each time */
 async function getMathReasoningTask(adjective = "fresh", topic = "fruit") {
     let topic_words = await getNTopicWords(adjective, topic, 2);
-    let min = 5, max = 100;
+    let min = 5,
+        max = 100;
     let i1 = topic_words.length > 0 ? topic_words[0] : "candy bars";
     let i2 = topic_words.length > 1 ? topic_words[1] : "shirts";
     let i1_value = randomNumber(min, max);
@@ -495,14 +576,77 @@ async function getMathReasoningTask(adjective = "fresh", topic = "fruit") {
 }
 
 
+/* Get a list of words for a topic starting with a letter */
+async function getWordsForLetterAndTopic(topic = "winter activites", letter) {
+    /**
+     * Example API call:
+     * 
+     * https://api.datamuse.com/words?ml=winter+activities&sp=b*&max=10
+     * */
+    let code = 'ml',
+        t = topic.replace(/\s+/g, '+');
+    let params = `${code}=${t}&sp=${letter}*&max=10`;
+    let url = `https://api.datamuse.com/words?${params}`;
+
+    console.log(`URL: ${url}`);
+
+    /* Call API again with topic words */
+    let response = await fetch(url);
+    let words = await response.json();
+
+    console.log(`Topic '${topic}' + code: '${code}' words: ` + JSON.stringify(words));
+    let arr = words.map(function(w) {
+        return w.word
+    });
+
+    if (arr.length == 0) {
+        console.error(`API FAILURE: Topic '${topic}' + code: ${code}`);
+    }
+
+    /* return promise array */
+    return arr.length > 0 ? arr : [];
+}
+
+
+/* Retuns a divergent naming category task */
+async function getDivergentNamingCategories(topic = "winter activites", number = 4) {
+    let tasks = new Array();
+    for (let i = 0; i < number; i++) {
+        let letter = getRandomLetter();
+        let sub_task = new Array();
+        let n_suggestions = 3;
+
+        let suggestions = await getWordsForLetterAndTopic(topic, letter);
+        console.log(`API returned ${suggestions.length} results: ${suggestions.join(",")}`);
+
+        if (suggestions.length > 0) {
+            sub_task.push(`Starting with the letter:<br><br>${letter.toUpperCase()}`);
+            suggestions = getRandomSubset(suggestions, n_suggestions);
+
+            if (suggestions.length > 1) {
+                sub_task.push(`Suggestions:<br><br>${suggestions.join(", ")}`);
+            } else {
+                sub_task.push(`Suggestions:<br><br>${suggestions.join("")}`);
+            }
+
+        } else {
+            console.log(`No good API results for letter: ${letter} and topic: ${topic}`);
+        }
+
+        tasks.push(...sub_task);
+    }
+    return tasks;
+}
+
+
 function setTextFields() {
-    boundsCheck();        
+    boundsCheck();
     let title = questions[i].title,
         text = questions[i].data[j];
-    
+
     console.log("Displaying element title " + i + ": " + title);
     console.log("Displaying element text " + j + ": " + text);
-    
+
     document.getElementById('titlebox').innerHTML = title;
     document.getElementById('txtbox').innerHTML = text;
 }
@@ -530,7 +674,7 @@ function randQuestion() {
 
 function nextItem() {
     boundsCheck();
-    /* data items exceeded, proceed to next question */ 
+    /* data items exceeded, proceed to next question */
     if (++j >= questions[i].data.length) {
         nextQuestion();
     }
@@ -544,7 +688,7 @@ document.onkeydown = function(e) {
         nextItem();
         setTextFields();
     }
-	/* right arrow, or up arrow */
+    /* right arrow, or up arrow */
     else if (e.keyCode == 38 || e.keyCode == 39) {
         console.log("Forward Key Event");
         nextQuestion();
@@ -558,7 +702,7 @@ document.onkeydown = function(e) {
     }
     /* letter R */
     else if (e.keyCode == 82) { // random
-		console.log("Random Key Event");
+        console.log("Random Key Event");
         randQuestion();
         setTextFields();
     }
@@ -566,9 +710,9 @@ document.onkeydown = function(e) {
 
 /* Mobile touch screen */
 document.body.addEventListener("touchend", function() {
-	console.log("Touch End Event");
-	nextItem();
-	setTextFields();
+    console.log("Touch End Event");
+    nextItem();
+    setTextFields();
 });
 
 </script>
