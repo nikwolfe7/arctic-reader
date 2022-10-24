@@ -20,13 +20,76 @@ function err(source) {
 </script>
 <script type="module">
 
-console.log("Loaded Questions array with: " + questions.length + " elements.");	
+console.log("Loaded Questions array with: " + questions_data.length + " elements.");
 
 var i = 0;
 var j = 0;
 
+
+/* ----------------------------------------------------------- */
+/* ******************** ORCHESTRATOR ************************* */
+/* ----------------------------------------------------------- */
+
+/* Array for tasks */
+var questions = new Array();
+
+// shuffled content
+var shuffled_content = Array();
+
+var num_rand_images = 3; // image description tasks
+var num_image_questions = 3; // number of image tasks
+var num_word_mem_questions = 2; // word memorization tasks
+var num_word_img_mem_questions = 2; // word + image memorization tasks
+var num_arctic_sentences = 5; // number of arctic sentences to read
+var num_questions_data_elements = 3; // number of questions from data.js
+var num_simple_question_type_elements = 3; // for simple question types, sample N 
+var num_math_tasks = 2; // number of math reasoning tasks
+
+
+/* ----------------------------------------------------------- */
+/* *************** DEFAULT TASKS INITIALIZATION ************** */
+/* ----------------------------------------------------------- */
+
+/* Warm up Task */
+var warm_up = {
+    "title": "Speech: Get Loud",
+    "question_type": "ordered",
+    "data": [
+        "As LOUD as you can:<br>&ldquo;Aaaaahhhh&rdquo;",
+        "Practice clearing your throat.",
+        "Puh-tuh-kuh<br>Puh-tuh-kuh<br>Puh-tuh-kuh",
+        "Puh puh puh",
+        "Tuh tuh tuh",
+        "Kuh kuh kuh",
+        "Red linoleum, yellow linoleum"
+    ]
+}
+
+var break_task = {
+    "title": "Great Job!",
+    "question_type": "simple",
+    "data": [
+        "Take a 1-3 minute break.",
+        "Tap to continue"
+    ]
+}
+
+var end_task = {
+    "title": "All Done!",
+    "question_type": "simple",
+    "data": [
+        "You've completed the question set!",
+        "Tap to try again, or reload for more."
+    ]
+}
+
+
+/* ----------------------------------------------------------- */
+/* ******** IMAGE DESCRIPTION TASKS INITIALIZATION *********** */
+/* ----------------------------------------------------------- */
+
 /* Add some images (max id is ~1070)*/
-var num_rand_images = 10, width = 600, height = 400, max_images = 1070;
+var width = 600, height = 400, max_images = 1070;
 console.log("Sampling " + num_rand_images + " from lorem picsum and appending to questions...");
 
 var rand_images = {
@@ -53,55 +116,136 @@ var describe_hidden_rand_images = {
     "data": getDescriptionImages(num_rand_images, max_images, width, height)
 }
 
-questions.push(rand_images);
-questions.push(writing_rand_images);
-questions.push(sentence_rand_images);
-questions.push(describe_hidden_rand_images);
+var image_questions = new Array();
+
+image_questions.push(rand_images);
+image_questions.push(writing_rand_images);
+image_questions.push(sentence_rand_images);
+image_questions.push(describe_hidden_rand_images);
+
+image_questions = getRandomSubset(image_questions, num_image_questions);
+
+
+
+/* ----------------------------------------------------------- */
+/* ******** WORD MEMORIZATION TASKS INITIALIZATION *********** */
+/* ----------------------------------------------------------- */
 
 /* Subset of Datamuse rel codes */
-const rel_codes = ["jja","jjb","syn","trg","spc","gen","com","bga","rhy","nry"];
+// const rel_codes = ["jja","jjb","syn","trg","spc","gen","com","bga","rhy","nry"];
+const rel_codes = ["jja","jjb","syn","trg"]; // simplified subset
 
 /* Default word lists */
 const groceries = ["apples","bananas","cheese","oranges","milk"];
 const shopping = ["scissors","toilet paper","pencils","erasers","napkins"];
 const todo = ["clothes","stamps","mail","card","donation"];
 
+var mem_questions = new Array();
+
 /* Append word memorization task to question set */
-var num_word_mem_questions = 5;
 while(num_word_mem_questions-- > 0) {
-    let num_words = 5;
+    let num_words = 4;
     console.log(`getting ${num_words} words...`);
-    getRandomWords(num_words, createWordMemorizationTask);
+    mem_questions.push(await createWordMemorizationTask(num_words));
 }
 
-
 /* Append N word memorization + image tasks to question set */
-var num_word_img_mem_questions = 5;
 while(num_word_img_mem_questions-- > 0) {
     let num_words = 4;
     console.log(`getting ${num_words} words...`);
-    getRandomWords(num_words, createWordMemorizationPlusImageTask);
+    mem_questions.push(await createWordMemorizationPlusImageTask(num_words));
 }
 
 
+/* ----------------------------------------------------------- */
+/* **************** ARCTIC DATA TASKS ************************ */
+/* ----------------------------------------------------------- */
+
 /* Add some artic sentence*/
-var num_arctic_sentences = 20;
 console.log(`Sampling ${num_arctic_sentences} from arctic dataset and appended to questions.`);
 
 var arctic = {
-    "title": "Speech: Read Out Loud",
+    "title": "Arctic: Read Out Loud",
     "question_type": "simple",
-    "data": getRandom(arctic_dataset, num_arctic_sentences)
+    "data": getRandomSubset(arctic_dataset, num_arctic_sentences)
 };
 
+
+/* ----------------------------------------------------------- */
+/* **************** QUESTIONS DATA TASKS ********************* */
+/* ----------------------------------------------------------- */
+
+// Get some of the questions array
+var questions_data_elements = getRandomSubset(questions_data, num_questions_data_elements);
+
+// Fix up the questions data so we can sample it, then add to shuffled content array
+questions_data_elements.forEach(function(e) {
+    if (e.question_type == "simple") {
+        console.log(`Sampling ${num_simple_question_type_elements} elements from questions array...`);
+        let question_data = getRandomSubset(e.data, num_simple_question_type_elements);
+        e.data = question_data;
+        shuffled_content.push(e);
+    } else if (e.question_type == "ordered") {
+        console.log("Question type is ordered, keeping everything... ");
+        shuffled_content.push(e);
+    } else {
+        console.log(`Question type is ${e.question_type}, no policy... `);
+    }
+});
+
+
+/* ----------------------------------------------------------- */
+/* **************** MATH WORD PROBLEMS *********************** */
+/* ----------------------------------------------------------- */
+
+var math_tasks = new Array();
+
+// Math reasoning tasks
+while (num_math_tasks-- > 0) {
+    math_tasks.push(await getMathReasoningTask("fresh", "fruit"));
+}
+
+/* ----------------------------------------------------------- */
+/* **************** SESSION ARRANGEMENT ********************** */
+/* ----------------------------------------------------------- */
+
+// add image questions & mem questions to list
+image_questions.forEach(function(e) { 
+    shuffled_content.push(e); 
+});
+
+mem_questions.forEach(function(e) {
+    shuffled_content.push(e);  
+});
+
+math_tasks.forEach(function(e) {
+    shuffled_content.push(e);  
+});
+
+// shuffle the shuffled content
+shuffle(shuffled_content);
+
+// Question Setup
+questions.push(warm_up);
 questions.push(arctic);
 
-// shuffle our sesh
-shuffle(questions);
+shuffled_content.forEach(function(e) {
+    questions.push(e);
+    if (Math.random() < 0.85) {
+        questions.push(break_task);    
+    }
+});
+
+questions.push(end_task);
+
+console.log(questions);
+
+/* ----------------------------------------------------------- */
+/* **************** END ORCHESTRATOR ************************* */
+/* ----------------------------------------------------------- */
 
 // initialize
 setTextFields();
-
 
 /* Check bounds of the data array */
 function boundsCheck() {
@@ -129,9 +273,8 @@ function shuffle(array) {
   return array;
 }
 
-
 /* Returns a random subset of array arr of size n */
-function getRandom(arr, n) {
+function getRandomSubset(arr, n) {
     let result = new Array(n),
         len = arr.length,
         taken = new Array(len);
@@ -146,6 +289,24 @@ function getRandom(arr, n) {
 }
 
 
+/* Remove a random element from an array without replacement */
+function getAndRemoveRandomArrayElement(arr) {
+    let i = Math.floor(Math.random() * arr.length);
+    let elem = arr[i]; // retrieve element
+    arr.splice(i, 1); // remove element
+    return elem; 
+}
+
+
+/* Get one random element from an array */
+function getRandomArrayElement(arr) {
+    if (arr.length == 0) {
+        return arr;
+    }
+    return getRandomSubset(arr, 1)[0];
+}
+
+
 /* Get a random letter of the alphabet */
 function getRandomLetter() {
   let alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -154,7 +315,8 @@ function getRandomLetter() {
 
 
 /* Create word memorization task */
-function createWordMemorizationTask(word_array) {
+async function createWordMemorizationTask(number = 5) {
+    let word_array = await getRandomWords(number);
     let list_of_words = word_array.join(' &bull; ');
     let rand_words = {
         "title": "Memorization: Word List",
@@ -167,12 +329,12 @@ function createWordMemorizationTask(word_array) {
         ]
     };
     return rand_words;
-
 }
 
 
 /* Create word memorization + image task */
-function createWordMemorizationPlusImageTask(word_array) {
+async function createWordMemorizationPlusImageTask(number = 5) {
+    let word_array = await getRandomWords(number);
     let list_of_words = word_array.join(' &bull; ');
     let rand_words = {
         "title": "Memorization: Word List + Image",
@@ -187,70 +349,62 @@ function createWordMemorizationPlusImageTask(word_array) {
         ]
     };
     return rand_words;
-
 }
 
 
 /* Get some random words from datamuse */
-function getRandomWords(number = 5, callback) {
+async function getRandomWords(number = 5) {
     /* get 100 words based on a random letter */
     let letter = getRandomLetter();
     let params = `sp=${letter}*&max=100`;
     let url = `https://api.datamuse.com/words?${params}`;
 
-    fetch(url)
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(words) {
-            /* return the word elements from the array */
-            console.log(`Letter '${letter}' words:` + JSON.stringify(words));
-            let arr = words.map(function(w) {
-                return w.word
-            });
-            /* 
-                Use a random word as a topic, then derive similar topic words.
-                If the API didn't return anything useful, select from a default
-                generic set of topics. 
-            */
-            let dt = ["movies", "music", "animals", "countries", "sports"];
-            let topic = arr.length > 0 ? getRandom(arr, 1)[0] : getRandom(dt, 1)[0];
+    let response = await fetch(url);
+    let words = await response.json();
+        
+    /* return the word elements from the array */
+    console.log(`Letter '${letter}' words:` + JSON.stringify(words));
 
-            /* Pick one of several types of matches */
-            // let code = getRandom(rel_codes, 1)[0];  
-            let code = "topics";
+    let arr = words.map(function(w) {
+        return w.word
+    });
 
-            // params = `rel_${code}=${topic}&max=${number}`;
-            params = `${code}=${topic}&max=${number}`;
-            url = `https://api.datamuse.com/words?${params}`;
+    /* 
+        Use a random word as a topic, then derive similar topic words.
+        If the API didn't return anything useful, select from a default
+        generic set of topics. 
+    */
+    let dt = ["movies", "music", "animals", "countries", "sports"];
+    let topic = arr.length > 0 ? getRandomSubset(arr, 1)[0] : getRandomSubset(dt, 1)[0];
 
-            console.log(`URL: ${url}`);
+    /* Pick one of several types of matches */
+    // let code = getRandomSubset(rel_codes, 1)[0];  
+    let code = "topics";
 
-            /* Call API again with topic words */
-            fetch(url).then(function(response) {
-                    return response.json();
-                })
-                .then(function(words) {
-                    console.log(`Topic '${topic}' + code: '${code}' words: ` + JSON.stringify(words));
-                    arr = words.map(function(w) {
-                        return w.word
-                    });
+    // params = `rel_${code}=${topic}&max=${number}`;
+    params = `${code}=${topic}&max=${number}`;
+    url = `https://api.datamuse.com/words?${params}`;
 
-                    if (arr.length == 0) {
-                        console.error(`API FAILURE: Topic '${topic}' + code: ${code}`);
-                    }
+    console.log(`URL: ${url}`);
 
-                    /* If the API fails, just pick one of the default word lists */
-                    arr = arr.length > 0 ? arr : getRandom([groceries, shopping, todo], 1)[0]
-                    let question_task = callback(arr);
-                    
-                    /* Push task onto questions array */
-                    questions.push(question_task);
+    /* Call API again with topic words */
+    response = await fetch(url);
+    words = await response.json();
 
-                    /* need to reshuffle after promise due to delay */
-                    shuffle(questions);
-                });
-        });
+    console.log(`Topic '${topic}' + code: '${code}' words: ` + JSON.stringify(words));
+    arr = words.map(function(w) {
+        return w.word
+    });
+
+    if (arr.length == 0) {
+        console.error(`API FAILURE: Topic '${topic}' + code: ${code}`);
+    }
+
+    /* If the API fails, just pick one of the default word lists */
+    arr = arr.length > 0 ? arr : getRandomSubset([groceries, shopping, todo], 1)[0]
+
+    /* return promise array */
+    return arr; 
 }
 
 
@@ -274,12 +428,70 @@ function getDescriptionImages(num_images, max_index, width, height) {
 /* Returns a random set of image URLs from lorem picsum */
 function getRandomImages(num_images, max_index, width, height) {
     let indices = Array(max_index).fill().map((element, index) => index);
-    let rand_subset = getRandom(indices, num_images);
+    let rand_subset = getRandomSubset(indices, num_images);
     for(let i = 0; i < rand_subset.length; ++i) {
         let s = `<img src='https://picsum.photos/id/${rand_subset[i]}/${width}/${height}' onerror='err(this)'/>`;
         rand_subset[i] = s; 
     }
     return rand_subset;
+}
+
+
+/* Return a list of N words matching a topic */
+async function getNTopicWords(adjective = "fresh", topic = "fruit", number = 2) {
+    let code = 'rel_jja'
+    let params = `${code}=${adjective}&topics=${topic}&max=100`;
+    let url = `https://api.datamuse.com/words?${params}`;
+
+    console.log(`URL: ${url}`);
+
+    /* Call API again with topic words */
+    let response = await fetch(url);
+    let words = await response.json();
+
+    console.log(`Topic '${topic}' + code: '${code}' words: ` + JSON.stringify(words));
+    let arr = words.map(function(w) {
+        return w.word
+    });
+
+    if (arr.length == 0) {
+        console.error(`API FAILURE: Topic '${topic}' + code: ${code}`);
+    }
+
+    /* If the API fails, just pick one of the default word lists */
+    arr = arr.length > 0 ? getRandomSubset(arr, number) : ["strawberries", "bananas", "candy bars"];
+    
+    /* return promise array */
+    return arr; 
+}
+
+
+/* Function to generate random number */
+function randomNumber(min, max) { 
+    return Math.floor(Math.random() * (max - min) + min);
+} 
+
+
+/* Returns a math word problem with new numbers each time */
+async function getMathReasoningTask(adjective = "fresh", topic = "fruit") {
+    let topic_words = await getNTopicWords(adjective, topic, 2);
+    let min = 5, max = 100;
+    let i1 = topic_words.length > 0 ? topic_words[0] : "candy bars";
+    let i2 = topic_words.length > 1 ? topic_words[1] : "shirts";
+    let i1_value = randomNumber(min, max);
+    let i2_value = randomNumber(min, max);
+    let n_dollars = randomNumber(min, max) + i1_value + i2_value;
+    let math_task = {
+        "title": "Cognitive: General Reasoning",
+        "question_type": "ordered",
+        "data": [
+            `If you take $${n_dollars} to the store and buy some ${i1} for $${i1_value} and some ${i2} for $${i2_value}, how many dollars did you spend?`,
+            `$${i1_value + i2_value}`,
+            "How many dollars do you have left?",
+            `$${n_dollars - (i1_value + i2_value)}`
+        ]
+    };
+    return math_task;
 }
 
 

@@ -1,5 +1,5 @@
 /* Speech & Cognitive Therapy */
-const questions = [
+const questions_data = [
 {
     "title": "Cognitive: Counting",
     "question_type": "simple",
@@ -23,7 +23,7 @@ const questions = [
 },
 {
     "title": "Cognitive: What Is This?",
-    "question_type": "simple",
+    "question_type": "ordered",
     "data": [
         "<img src='https://stsci-opo.org/STScI-01G70BN48JR6M4ZTW3642X2D2H.png'/>",
         "The Southern Ring Nebula",
@@ -35,19 +35,6 @@ const questions = [
         "Stephan's Quintet",
         "<img src='../img/vegetables.jpeg'>",
         "Vegetables: Cucumbers, Green Peppers, Okra, Squash, Green Beans, Cherry Tomatoes, Heirloom Tomatoes",
-    ]
-},
-{
-    "title": "Speech: Get Loud",
-    "question_type": "simple",
-    "data": [
-        "As LOUD as you can:<br>&ldquo;Aaaaahhhh&rdquo;",
-        "Practice clearing your throat.",
-        "Puh-tuh-kuh<br>Puh-tuh-kuh<br>Puh-tuh-kuh",
-        "Puh puh puh",
-        "Tuh tuh tuh",
-        "Kuh kuh kuh",
-        "Red linoleum, yellow linoleum"
     ]
 },
 {
@@ -160,9 +147,7 @@ const questions = [
         "In 1 minute:<br>Name as many countries in South America as you can.",
         "In 1 minute:<br>Name as many countries in Asia as you can.",
         "In 1 minute:<br>Name as many countries in Antarctica as you can.",
-        "LOL! 😂",
         "In 1 minute:<br>Name as many countries in Australia as you can.",
-        "Gotcha again! 😂",
         "In 1 minute, name as many as you can:<br>Cities",
         "In 1 minute, name as many as you can:<br>Senators & Congresspeople",
         "In 1 minute, name as many as you can:<br>Supreme Court Justices",
@@ -181,12 +166,11 @@ const questions = [
         "In 1 minute, name as many as you can:<br>Types of seafood",
         "In 1 minute, name as many as you can:<br>Types of wine",
         "In 1 minute, name as many as you can:<br>Heads of state",
-        "Good job!"
     ]
 },
 {
     "title": "Cognitive: What am I?",
-    "question_type": "simple",
+    "question_type": "ordered",
     "data": [
         "This animal is black and white, is from China, and eats bamboo.",
         "Panda",
@@ -241,19 +225,17 @@ const questions = [
 },
 {
     "title": "Cognitive: General Reasoning",
-    "question_type": "simple",
+    "question_type": "ordered",
     "data": [
         "Are grandparents typically younger than their grandchildren?",
+        "No",
         "If you're chopping wood, what tool would you use?",
-        "If you take $100 to the store and buy a candy bar for $3 and a shirt for $20, how many dollars did you spend?",
-        "$23",
-        "How many dollars do you have left?",
-        "$77"
+        "An axe",
     ]
 },
 {
     "title": "Cognitive: Sentence Completion",
-    "question_type": "completion",
+    "question_type": "simple",
     "data": [
         "The room is either too hot or too ____.",
         "My plants are either too short or too ____.",
