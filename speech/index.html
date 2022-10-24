@@ -66,6 +66,15 @@ var warm_up = {
     ]
 }
 
+var oware_task = {
+    "title": "Playing Games: Oware",
+    "question_type": "simple",
+    "data": [
+        '<a href="https://www.arctic-reader.com/oware" target="_blank">Oware</a>',
+        "Tap to continue"
+    ]
+}
+
 var break_task = {
     "title": "Great Job!",
     "question_type": "simple",
@@ -303,7 +312,6 @@ div_naming_tasks.forEach(function(e) {
 shuffle(shuffled_content);
 
 // Question Setup
-//questions.push(div_naming_tasks[0]);
 questions.push(warm_up);
 questions.push(arctic);
 
@@ -314,6 +322,7 @@ shuffled_content.forEach(function(e) {
     questions.push(e);
 });
 
+questions.push(oware_task);
 questions.push(end_task);
 
 console.log(questions);

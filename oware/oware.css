@@ -5,6 +5,7 @@ html {
 	justify-content: center;
 	width:100%;
 	margin: 0;
+	background-color: black;
 }
 html, body {
   overflow-x: hidden;
@@ -17,6 +18,7 @@ h1 {
 	text-decoration:none; 
 	color:black; 
 	font-size: 3vw;
+	color: #EFEFEF;
 }
 #top {
 	display: flex;
@@ -62,10 +64,10 @@ table {
 	margin: auto;
 	justify-content: center;
 	border:3px solid #b39045;
-	border-radius:5em;
+	border-radius:4em;
 	padding:1em;
 	background-color:rgb(245, 239, 196);
-	box-shadow:0.5em 0.5em 1em #b39045;
+	box-shadow:0.25em 0.25em 0.5em #b39045;
 }
 .side { 
 	border:3px solid deepskyblue; }
@@ -83,6 +85,7 @@ table {
 }
 #p1Score, #p2Score {
 	font-size:5.5vw;
+	color: #EFEFEF;
 }	
 #player { 
 	text-align:center;
@@ -94,7 +97,7 @@ table {
 	float:left; 
 	height:10em;
 }
-#bottom-left p, #bottom-right p { font-size:2vw; } 
+#bottom-left p, #bottom-right p { font-size:2vw; color: #EFEFEF; } 
 #bottom-left { width:20rem; }
 #bottom-middle { 
 	width:20rem; 
@@ -152,7 +155,7 @@ div#message {
 	/*margin-top:-1em;*/
 	margin-bottom:5rem;
 }
-#chooseGameType h2{ font-size: 2vw;}
+#chooseGameType h2{ font-size: 2vw; }
 #chooseGameType p { margin-bottom:0.5em; }
 #difficulty ul { 
 	list-style:none; 
