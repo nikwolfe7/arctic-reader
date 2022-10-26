@@ -155,13 +155,11 @@ div#message {
 @media screen and (orientation: portrait) {
 	html {
 	    transform: rotate(90deg);
-	    height:180vw;
+	    height:150vw;
+	    width: 100vw;
   	}
   	body {
   		position: absolute;
-  	}
-  	#container {  		
-  		margin-right: calc(50% - 20vw);
   	}
 }
 
