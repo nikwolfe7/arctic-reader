@@ -155,7 +155,7 @@ div#message {
 @media screen and (orientation: portrait) {
 	html {
 	    transform: rotate(90deg);
-	    height:150vw;
+	    height:180vw;
 	    width: 100vw;
   	}
   	body {
