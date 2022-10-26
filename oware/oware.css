@@ -8,8 +8,8 @@ html {
 	background-color: black;
 }
 html, body {
-  overflow-x: hidden;
-  overflow-y: scroll;
+  /*overflow-x: hidden;*/
+  /*overflow-y: scroll;*/
 }
 body {
   position: relative;
@@ -22,11 +22,6 @@ h1 {
 }
 #top {
 	display: flex;
-	/*margin-top: -2rem;*/
-	/*margin-right:auto;
-	margin-left:auto;
-	/*width:100%;*/
-	/*display: flex;*/
 	justify-content: center;
 	align-items: center;
 	text-align:center;
@@ -34,18 +29,12 @@ h1 {
 }	
 #container {
 	margin:auto;
-	/*width:100%;*/
-	/*display: flex;*/
 	justify-content: center;
 	align-items: center;
 	text-align:center;
 	font-family: Georgia;
-	/*font-size: 1vw;*/
-	height:650px;
 }
 .button {
-	/*width:10em;
-	height:10em;*/
 	width:130px;
 	height:130px;
 	padding:4.4em;
@@ -60,7 +49,6 @@ h1 {
 	font-size:1em;
 }
 table {
-	/*margin-left:5.5em;*/
 	margin: auto;
 	justify-content: center;
 	border:3px solid #b39045;
@@ -164,11 +152,18 @@ div#message {
 } 
 
 /* Force landscape orientation in portrait */
-@media screen and (orientation:portrait) {
+@media screen and (orientation: portrait) {
 	html {
 	    transform: rotate(90deg);
-	    background-color: green;
+	    height:180vw;
+  	}
+  	body {
+  		position: absolute;
+  	}
+  	#container {  		
+  		margin-right: calc(50% - 20vw);
   	}
 }
+
 
 
