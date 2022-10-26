@@ -162,3 +162,13 @@ div#message {
 	text-align:left; 
 	margin-left: 30%;
 } 
+
+/* Force landscape orientation in portrait */
+@media screen and (orientation:portrait) {
+	html {
+	    transform: rotate(90deg);
+	    background-color: green;
+  	}
+}
+
+

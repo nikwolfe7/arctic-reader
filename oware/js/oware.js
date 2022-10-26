@@ -1,3 +1,11 @@
+/**
+ * oware.js
+ * 
+ * Author: Nikolas Wolfe
+ * Email: nikwolfe7@gmail.com
+ * 
+ * JS modules to control gameplay of Oware game
+ */
 
 $(window).load(function(){  
     // this delay is here because the image 
